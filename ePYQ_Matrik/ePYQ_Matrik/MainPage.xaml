@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:ePYQ_Matrik"
+             x:Class="ePYQ_Matrik.MainPage">
+
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Margin="12, 56, 0, 12" BackgroundColor="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="180"/>
+                </Grid.RowDefinitions>
+                <Frame 
+                    HeightRequest="180"
+                    WidthRequest="480"
+                    Padding="12"
+                    HorizontalOptions="Fill"
+                    HasShadow="True"
+                    Margin="24"
+                    CornerRadius="18">
+                    <Frame.Background>
+                        <!-- StartPoint defaults to (0,0) -->
+                        <LinearGradientBrush EndPoint="1,0">
+                            <GradientStop Color="#800080"
+                          Offset="1.0" />
+                            <GradientStop Color="#452c63"
+                          Offset="0.1" />
+                        </LinearGradientBrush>
+                    </Frame.Background>
+
+                    <StackLayout>
+                        <Label Text="Start Learning!" 
+                               FontAttributes="Bold" 
+                               HorizontalTextAlignment="Start" 
+                               HorizontalOptions="StartAndExpand"
+                               TextColor="White"
+                               FontSize="32"
+                               Margin="0"
+                               Padding="4"/>
+                        <Frame
+                            BackgroundColor="white"
+                            CornerRadius="18"
+                            HeightRequest="16"
+                            Padding="14">
+                            <SearchBar 
+                               Placeholder="What do you want to study?"
+                               Background="white"
+                               PlaceholderColor="Black"
+                               TextTransform="Lowercase"
+                               HorizontalTextAlignment="Start"
+                               FontSize="14"
+                               FontAttributes="Italic"/>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
+         
+                <CarouselView BackgroundColor="Yellow" ItemsSource="{Binding subject}" 
+                              HeightRequest="26" PeekAreaInsets="120">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame
+                                    HeightRequest="2"
+                                    MinimumWidthRequest="14"
+                                    BackgroundColor="Black"
+                                    HorizontalOptions="Start"
+                                    CornerRadius="20"
+                                    Margin="30,12,0,12"
+                                    HasShadow="True">
+                                   <Label Text="{Binding subject}" TextColor="Black" 
+                                           FontSize="14" 
+                                           FontAttributes="None" 
+                                           VerticalTextAlignment="Center" 
+                                           HorizontalOptions="Center" 
+                                           Margin="-16"/>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+
+            
+            <Grid HeightRequest="78">
+                <StackLayout Orientation="Horizontal" >
+
+                    <Label Text="Latest Past Year Questions"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           HorizontalOptions="Start"
+                           Margin="30, 24"/>
+                    <Image Source="https://cdn-icons-png.flaticon.com/512/4344/4344873.png"
+                           HeightRequest="58"
+                           HorizontalOptions="End"
+                           Aspect="AspectFit" Margin="0"/>
+
+                </StackLayout>
+            </Grid>
+
+            <Grid BackgroundColor="AntiqueWhite">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                
+                <Frame
+                HeightRequest="228"
+                WidthRequest="128"
+                HasShadow="True"
+                Margin="10"
+                CornerRadius="18"
+                BackgroundColor="#D3D3D3">
+                    <StackLayout >
+
+                        <StackLayout>
+                            <Image Source="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png" 
+                                   HeightRequest="120" 
+                                   Aspect="AspectFit" 
+                                   Margin="2"/> 
+                        </StackLayout>
+                        
+                            
+                        <Label 
+                           Text="Chemistry Trial Paper 2020"
+                           HorizontalTextAlignment="Center"
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           TextColor="Black"    
+                           HorizontalOptions="Center"
+                           VerticalOptions="EndAndExpand"
+                           Margin="-2">
+                        </Label>
+
+                        <Label 
+                           Text="Kolej Matrikulasi Labuan"
+                           FontSize="12"
+                           HorizontalTextAlignment="Center"
+                           FontAttributes="None"
+                           TextColor="#71797E"    
+                           HorizontalOptions="Center"
+                           VerticalOptions="End"
+                           Margin="0, -2, 0, 22"/>
+
+                        <StackLayout Orientation="Horizontal" Margin="8, -12, 0, 0">
+                            <Image Source="https://upload.wikimedia.org/wikipedia/commons/f/fd/A_star.png"
+                                   HeightRequest="22"
+                                   Aspect="AspectFit"/>
+                            <Label Text ="4.9" TextColor="#71797E" FontSize="16"/>
+                            <Image Source="https://www.vhv.rs/dpng/d/109-1095128_bookmark-png-clipart-new-instagram-share-icon-transparent.png"
+                                   HeightRequest="22"
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="EndAndExpand" Margin="10, -12"/>
+
+                        </StackLayout>
+
+                    </StackLayout>
+                
+                </Frame>
+            </Grid>
+          
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

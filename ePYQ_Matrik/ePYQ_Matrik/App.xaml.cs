@@ -10,7 +10,9 @@ namespace ePYQ_Matrik
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
+
+            MainPage = new NavigationPage(new LoginUI());
         }
 
         protected override void OnStart()

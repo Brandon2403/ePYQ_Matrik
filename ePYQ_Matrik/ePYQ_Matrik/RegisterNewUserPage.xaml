@@ -2,11 +2,121 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ePYQ_Matrik.RegisterNewUserPage">
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to RegisterNewUserPage!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout 
+            Padding="40" 
+            VerticalOptions="Center" 
+            HorizontalOptions="FillAndExpand">
+
+            <Image 
+                   Source="logo.png"
+                   WidthRequest="240"
+                   HeightRequest="240"
+                   Margin="0,-78,0,-52">
+            </Image>
+
+            <Label 
+                Text="Create Your Account" 
+                TextColor="Black"
+                FontSize="28" FontAttributes="Bold"
+                HorizontalOptions="Center"
+                VerticalOptions="Start" />
+            <Label 
+                Text="Please enter info to create account" 
+                TextColor="Black"
+                FontSize="13" FontAttributes="None"
+                Margin="-1"
+                HorizontalOptions="Center"
+                VerticalOptions="Start" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Image 
+                    Grid.Row="1"
+                       Grid.Column="1"
+                       Source="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" 
+                       HeightRequest="28" 
+                       Margin="-120,0,0,0" 
+                       VerticalOptions="Center" />
+
+                <Entry Grid.Row="1"
+                       Grid.Column="2" 
+                       Margin="-118,0,10,0"
+                       x:Name="UsernameEntry" Placeholder="Username" />
+
+                <Image 
+                    Grid.Row="2"
+                       Grid.Column="1"
+                       Source="https://cdn-icons-png.flaticon.com/512/2549/2549872.png" 
+                       HeightRequest="28" 
+                       Margin="-120,0,0,0" 
+                       VerticalOptions="Center" />
+
+                <Entry Grid.Row="2"
+                       Grid.Column="2" 
+                       Margin="-118,0,10,0"
+                       x:Name="EmailEntry" Placeholder="Email Address"/>
+
+                <Image 
+                    Grid.Row="3"
+                       Grid.Column="1"
+                       Source="https://icons.veryicon.com/png/o/internet--web/three-body-project-icon/password-22.png" 
+                       HeightRequest="28" 
+                       Margin="-120,0,0,0" 
+                       VerticalOptions="Center" />
+
+                <Entry Grid.Row="3"
+                       Grid.Column="2" 
+                       Margin="-118,0,10,0"
+                       x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+
+                <Image 
+                    Grid.Row="4"
+                       Grid.Column="1"
+                       Source="https://www.clipartmax.com/png/middle/436-4360406_png-file-confirm-password-icon-vector.png" 
+                       HeightRequest="28" 
+                       Margin="-120,0,0,0" 
+                       VerticalOptions="Center" />
+
+                <Entry Grid.Row="4"
+                       Grid.Column="2" 
+                       Margin="-118,0,10,0"
+                       x:Name="ConfirmPasswordEntry" Placeholder="Confirm Password" IsPassword="True" />
+            </Grid>
+
+            <Button 
+                Margin="24"
+                Text="Register" 
+                FontAttributes="Bold"
+                FontSize="16"
+                TextColor="White"
+                BackgroundColor="Purple"
+                BorderWidth="1.5"
+                CornerRadius="48"
+                Clicked="RegisterButton_Clicked" />
+
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Already have an account? " TextColor="Gray"/>
+                        <Span Text="LOG IN" TextColor="Blue" FontAttributes="Bold" />
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

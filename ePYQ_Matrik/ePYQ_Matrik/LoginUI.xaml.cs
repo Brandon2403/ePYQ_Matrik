@@ -17,7 +17,9 @@ namespace ePYQ_Matrik
         {
             if (sender is Button button && button.Text == "Login")
             {
-                if (txtUsername.Text == "admin" && txtPassword.Text == "123")
+                // TODO: Add code for user to login from using database
+
+                if (UsernameEntry.Text == "admin" && PasswordEntry.Text == "123")
                 {
                     Navigation.PushAsync(new MainPage());
                 }

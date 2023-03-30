@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ePYQ_Matrik.LoginUI">
+    <ContentPage.Content>
+        <StackLayout 
+            Padding="40" 
+            VerticalOptions="Center" 
+            HorizontalOptions="FillAndExpand">
+
+            <Image Source="logo.png"
+                   WidthRequest="240"
+                   HeightRequest="240">
+            </Image>
+            
+            <Entry x:Name="txtUsername" Placeholder="Username" TextColor="Black" PlaceholderColor="Gray"></Entry>
+            <Entry x:Name="txtPassword" Placeholder="Password" IsPassword="True" TextColor="Black" PlaceholderColor="Gray"></Entry>
+            <Button
+                Margin="24"
+                VerticalOptions="Center"
+                Text="Login"
+                FontAttributes="Bold"
+                FontSize="16"
+                TextColor="White"
+                BackgroundColor="Purple"
+                BorderWidth="1.5"
+                CornerRadius="48"
+                Clicked="Button_Clicked">
+            </Button>
+
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Don't have an account?" TextColor="Gray"/>
+                        <Span Text=" Register now" TextColor="Gray" FontAttributes="Bold" TextDecorations="Underline" />
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+                
+                
+            </Label>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

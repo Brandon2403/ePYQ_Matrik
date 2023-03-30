@@ -3,27 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:vm="clr-namespace:ePYQ_Matrik"
              x:Class="ePYQ_Matrik.MainPage">
-
-    <ContentPage.BindingContext>
-        <vm:MainViewModel/>
-    </ContentPage.BindingContext>
     
+    <ContentPage.BindingContext>
+        <vm:ListVM/>
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Grid Margin="12, 56, 0, 12" BackgroundColor="Black">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="180"/>
-                </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0" Margin="20" BackgroundColor="Yellow">
                 <Frame 
-                    HeightRequest="180"
-                    WidthRequest="480"
-                    Padding="12"
+                    HeightRequest="220"
+                    WidthRequest="344"
                     HorizontalOptions="Fill"
-                    HasShadow="True"
-                    Margin="24"
+                    HasShadow="False"
+                    Margin="8"
                     CornerRadius="18">
                     <Frame.Background>
                         <!-- StartPoint defaults to (0,0) -->
@@ -39,16 +42,23 @@
                         <Label Text="Start Learning!" 
                                FontAttributes="Bold" 
                                HorizontalTextAlignment="Start" 
-                               HorizontalOptions="StartAndExpand"
+                               HorizontalOptions="Start"
                                TextColor="White"
-                               FontSize="32"
-                               Margin="0"
-                               Padding="4"/>
+                               FontSize="28"
+                               Margin="17, 38, 0, -32"
+                               Padding="2"/>
+                        <Image Source="https://cdn-icons-png.flaticon.com/512/747/747086.png"
+                               HeightRequest="98"
+                               HorizontalOptions="End"
+                               Aspect="AspectFit" Margin="24, -78" />
+
                         <Frame
                             BackgroundColor="white"
                             CornerRadius="18"
-                            HeightRequest="16"
-                            Padding="14">
+                            HeightRequest="2"
+                            HorizontalOptions="CenterAndExpand"
+                            Margin="-12, 82"
+                            >
                             <SearchBar 
                                Placeholder="What do you want to study?"
                                Background="white"
@@ -56,42 +66,15 @@
                                TextTransform="Lowercase"
                                HorizontalTextAlignment="Start"
                                FontSize="14"
-                               FontAttributes="Italic"/>
+                               FontAttributes="Italic"
+                                Margin="-24"/>
                         </Frame>
                     </StackLayout>
                 </Frame>
             </Grid>
 
-         
-                <CarouselView BackgroundColor="Yellow" ItemsSource="{Binding subject}" 
-                              HeightRequest="26" PeekAreaInsets="120">
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout>
-                                <Frame
-                                    HeightRequest="2"
-                                    MinimumWidthRequest="14"
-                                    BackgroundColor="Black"
-                                    HorizontalOptions="Start"
-                                    CornerRadius="20"
-                                    Margin="30,12,0,12"
-                                    HasShadow="True">
-                                   <Label Text="{Binding subject}" TextColor="Black" 
-                                           FontSize="14" 
-                                           FontAttributes="None" 
-                                           VerticalTextAlignment="Center" 
-                                           HorizontalOptions="Center" 
-                                           Margin="-16"/>
-                                </Frame>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
-
-            
-            <Grid HeightRequest="78">
+            <Grid Grid.Row="0" Grid.Column="1">
                 <StackLayout Orientation="Horizontal" >
-
                     <Label Text="Latest Past Year Questions"
                            TextColor="Black"
                            FontAttributes="Bold"
@@ -102,74 +85,36 @@
                            HeightRequest="58"
                            HorizontalOptions="End"
                            Aspect="AspectFit" Margin="0"/>
-
                 </StackLayout>
             </Grid>
 
-            <Grid BackgroundColor="AntiqueWhite">
+
+            <Grid Margin="240" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                
-                <Frame
-                HeightRequest="228"
-                WidthRequest="128"
-                HasShadow="True"
-                Margin="10"
-                CornerRadius="18"
-                BackgroundColor="#D3D3D3">
-                    <StackLayout >
 
-                        <StackLayout>
-                            <Image Source="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png" 
-                                   HeightRequest="120" 
-                                   Aspect="AspectFit" 
-                                   Margin="2"/> 
-                        </StackLayout>
-                        
-                            
-                        <Label 
-                           Text="Chemistry Trial Paper 2020"
-                           HorizontalTextAlignment="Center"
-                           FontSize="15"
-                           FontAttributes="Bold"
-                           TextColor="Black"    
-                           HorizontalOptions="Center"
-                           VerticalOptions="EndAndExpand"
-                           Margin="-2">
-                        </Label>
+                <Frame Margin="490" VerticalOptions="Start" Grid.Row="1">
+                    <ScrollView Margin="490" VerticalOptions="FillAndExpand">
+                        <Grid x:Name="MyGrid" ColumnSpacing="10" RowSpacing="10" Padding="0" BackgroundColor="Black" Margin="12" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <ListView ItemsSource="{Binding MyItems}" HeightRequest="2" VerticalOptions="FillAndExpand" >
 
-                        <Label 
-                           Text="Kolej Matrikulasi Labuan"
-                           FontSize="12"
-                           HorizontalTextAlignment="Center"
-                           FontAttributes="None"
-                           TextColor="#71797E"    
-                           HorizontalOptions="Center"
-                           VerticalOptions="End"
-                           Margin="0, -2, 0, 22"/>
-
-                        <StackLayout Orientation="Horizontal" Margin="8, -12, 0, 0">
-                            <Image Source="https://upload.wikimedia.org/wikipedia/commons/f/fd/A_star.png"
-                                   HeightRequest="22"
-                                   Aspect="AspectFit"/>
-                            <Label Text ="4.9" TextColor="#71797E" FontSize="16"/>
-                            <Image Source="https://www.vhv.rs/dpng/d/109-1095128_bookmark-png-clipart-new-instagram-share-icon-transparent.png"
-                                   HeightRequest="22"
-                                   Aspect="AspectFit"
-                                   HorizontalOptions="EndAndExpand" Margin="10, -12"/>
-
-                        </StackLayout>
-
-                    </StackLayout>
-                
+                            </ListView>
+                        </Grid>
+                    </ScrollView>
                 </Frame>
             </Grid>
-          
 
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

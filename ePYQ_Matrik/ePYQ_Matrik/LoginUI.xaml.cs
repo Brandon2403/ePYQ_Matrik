@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,7 +13,15 @@ namespace ePYQ_Matrik
             InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private bool rememberMe = false;
+
+        public bool RememberMe
+        {
+            get { return rememberMe; }
+            set { rememberMe = value; }
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
         {
             if (sender is Button button && button.Text == "Login")
             {
@@ -21,12 +29,35 @@ namespace ePYQ_Matrik
 
                 if (UsernameEntry.Text == "admin" && PasswordEntry.Text == "123")
                 {
-                    Navigation.PushAsync(new MainPage());
+                    if (RememberMe)
+                    {
+                        // Save the user's credentials
+                        Preferences.Set("Username", UsernameEntry.Text);
+                        Preferences.Set("Password", PasswordEntry.Text);
+                    }
+
+                    await Navigation.PushAsync(new MainPage());
                 }
                 else
                 {
-                    DisplayAlert("Opps!", "Username or Password is incorrect", "Ok");
+                    await DisplayAlert("Oops!", "Username or Password is incorrect", "Ok");
                 }
+            }
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Check if the user's credentials were previously saved
+            string savedUsername = Preferences.Get("Username", null);
+            string savedPassword = Preferences.Get("Password", null);
+
+            if (savedUsername != null && savedPassword != null)
+            {
+                UsernameEntry.Text = savedUsername;
+                PasswordEntry.Text = savedPassword;
+                RememberMe = true;
             }
         }
 

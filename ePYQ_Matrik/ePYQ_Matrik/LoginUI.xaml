@@ -65,7 +65,13 @@
                 Clicked="Button_Clicked">
             </Button>
 
-            <Label HorizontalOptions="Center">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Margin="-14">
+                <Switch x:Name="RememberMeSwitch" IsToggled="{Binding RememberMe, Mode=TwoWay}" />
+                <Label Text="Remember me" VerticalOptions="Center" />
+            </StackLayout>
+
+
+            <Label HorizontalOptions="Center" Margin="28" VerticalOptions="Center" >
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Don't have an account?" TextColor="Gray"/>
@@ -76,6 +82,8 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Label.GestureRecognizers>
             </Label>
+            
+       
 
         </StackLayout>
     </ContentPage.Content>

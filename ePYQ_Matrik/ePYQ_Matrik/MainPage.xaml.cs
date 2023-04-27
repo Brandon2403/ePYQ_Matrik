@@ -13,16 +13,7 @@ namespace ePYQ_Matrik
         public MainPage()
         {
             InitializeComponent();
-
-            // Create an instance of the ListVM class and pass the MyGrid instance to its constructor
-            var listVM = new ListVM(MyGrid);
-
-            var viewModel = new ListVM(MyGrid);
-            Content = viewModel.Content;
-
-
-            // Set the binding context to the ListVM instance
-            BindingContext = listVM;
+         
         }
     }
 }

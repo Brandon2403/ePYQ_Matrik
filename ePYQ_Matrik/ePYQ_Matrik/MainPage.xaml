@@ -1,9 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:vm="clr-namespace:ePYQ_Matrik"
              x:Class="ePYQ_Matrik.MainPage">
-    
+
     <ContentPage.BindingContext>
         <vm:ListVM/>
     </ContentPage.BindingContext>
@@ -12,109 +11,153 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0" Grid.Column="0" Margin="20" BackgroundColor="Yellow">
-                <Frame 
-                    HeightRequest="220"
-                    WidthRequest="344"
-                    HorizontalOptions="Fill"
-                    HasShadow="False"
-                    Margin="8"
-                    CornerRadius="18">
-                    <Frame.Background>
-                        <!-- StartPoint defaults to (0,0) -->
-                        <LinearGradientBrush EndPoint="1,0">
-                            <GradientStop Color="#800080"
-                          Offset="1.0" />
-                            <GradientStop Color="#452c63"
-                          Offset="0.1" />
-                        </LinearGradientBrush>
-                    </Frame.Background>
+            <!--1st row-->
+            <Frame Grid.Row="0"
+                   Margin="23, 116, 0, 0"
+                   AbsoluteLayout.LayoutBounds="0,0,344,220"
+                   HeightRequest="189"
+                   WidthRequest="344"
+                   HorizontalOptions="Start"
+                   HasShadow="False"
+                   CornerRadius="30">
 
-                    <StackLayout>
-                        <Label Text="Start Learning!" 
-                               FontAttributes="Bold" 
-                               HorizontalTextAlignment="Start" 
-                               HorizontalOptions="Start"
-                               TextColor="White"
-                               FontSize="28"
-                               Margin="17, 38, 0, -32"
-                               Padding="2"/>
-                        <Image Source="https://cdn-icons-png.flaticon.com/512/747/747086.png"
-                               HeightRequest="98"
-                               HorizontalOptions="End"
-                               Aspect="AspectFit" Margin="24, -78" />
+                <Frame.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#CE7EF3" Offset="0.199" />
+                        <GradientStop Color="#CE7EF3" Offset="0.2188" />
+                        <GradientStop Color="#C55EF5" Offset="0.4062" />
+                        <GradientStop Color="#6A0A97" Offset="1" />
+                    </LinearGradientBrush>
+                </Frame.Background>
 
-                        <Frame
-                            BackgroundColor="white"
-                            CornerRadius="18"
-                            HeightRequest="2"
-                            HorizontalOptions="CenterAndExpand"
-                            Margin="-12, 82"
-                            >
-                            <SearchBar 
-                               Placeholder="What do you want to study?"
-                               Background="white"
-                               PlaceholderColor="Black"
-                               TextTransform="Lowercase"
-                               HorizontalTextAlignment="Start"
-                               FontSize="14"
-                               FontAttributes="Italic"
-                                Margin="-24"/>
+                <Label  Text="Start Learning"
+                        FontFamily="Inter"
+                        FontSize="36"
+                        FontAttributes="Bold"
+                        TextColor="#FFFFFF"
+                        HeightRequest="100"
+                        WidthRequest="148"
+                        Margin="5,18,0,0"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Start"
+                        />
+            </Frame>
+            
+                <Image  Source="https://cdn-icons-png.flaticon.com/512/747/747086.png"
+                        WidthRequest="129"
+                        HeightRequest="125"
+                        Margin="216, 132, 0, 0"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start" />
+
+            <SearchBar Placeholder="What do you want to learn?"
+                       BackgroundColor="#FFFFFF"
+                       PlaceholderColor="#7F7F7F"
+                       CancelButtonColor="#000000"
+                       HeightRequest="44"
+                       WidthRequest="319"
+                       Margin="38, 272, 0, 0"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"
+                       FontSize="Medium"
+                       FontFamily="Helvetica Neue">
+            </SearchBar>
+            
+            
+            <!--2nd row-->
+            <Label Grid.Row="1"
+                   Text="Latest Past Year Questions"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   HorizontalOptions="Start"
+                   Margin="30, 24"/>
+            <Image Grid.Row="1"
+                   Source="https://cdn-icons-png.flaticon.com/512/4344/4344873.png"
+                   HeightRequest="58"
+                   HorizontalOptions="End"
+                   Aspect="AspectFit" Margin="0,0,48,0"/>
+            
+            <!--3rd row, the list view-->
+
+            <CollectionView 
+                Grid.Row="2"
+                BackgroundColor="Yellow"
+                ItemsSource="{Binding MyItems}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                      Span="2"
+                                      VerticalItemSpacing="10"
+                                      HorizontalItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10"
+                               BackgroundColor="#E5E1E7"
+                               CornerRadius="20"
+                               HasShadow="False">
+                            <StackLayout>
+                                <Frame CornerRadius="20"
+                                       BackgroundColor="Transparent"
+                                       HasShadow="False"
+                                       HeightRequest="168"
+                                       WidthRequest="160">
+                                    <Image Source="{Binding ImageUrl}"
+                                           Aspect="AspectFill"
+                                           WidthRequest="116"
+                                           HeightRequest="132"
+                                           VerticalOptions="StartAndExpand"
+                                           HorizontalOptions="CenterAndExpand"
+                                           Margin="8" />
+                                </Frame>
+
+                                <Label Text="{Binding Title}"
+                                       FontAttributes="Bold"
+                                       FontSize="14"
+                                       TextColor="Black"
+                                       Margin="0"
+                                       Padding="0"
+                                       VerticalOptions="EndAndExpand"
+                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       LineHeight="1.2">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenPdfCommand}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <Label Text="{Binding Description}"
+                                       FontAttributes="None"
+                                       FontSize="10"
+                                       TextColor="Black"
+                                       Margin="0"
+                                       Padding="0"
+                                       VerticalOptions="EndAndExpand"
+                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       LineHeight="0.6" />
+                            </StackLayout>
                         </Frame>
-                    </StackLayout>
-                </Frame>
-            </Grid>
-
-            <Grid Grid.Row="0" Grid.Column="1">
-                <StackLayout Orientation="Horizontal" >
-                    <Label Text="Latest Past Year Questions"
-                           TextColor="Black"
-                           FontAttributes="Bold"
-                           FontSize="20"
-                           HorizontalOptions="Start"
-                           Margin="30, 24"/>
-                    <Image Source="https://cdn-icons-png.flaticon.com/512/4344/4344873.png"
-                           HeightRequest="58"
-                           HorizontalOptions="End"
-                           Aspect="AspectFit" Margin="0"/>
-                </StackLayout>
-            </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
 
-            <Grid Margin="240" VerticalOptions="FillAndExpand">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <Frame Margin="490" VerticalOptions="Start" Grid.Row="1">
-                    <ScrollView Margin="490" VerticalOptions="FillAndExpand">
-                        <Grid x:Name="MyGrid" ColumnSpacing="10" RowSpacing="10" Padding="0" BackgroundColor="Black" Margin="12" >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <ListView ItemsSource="{Binding MyItems}" HeightRequest="2" VerticalOptions="FillAndExpand" >
-
-                            </ListView>
-                        </Grid>
-                    </ScrollView>
-                </Frame>
-            </Grid>
 
         </Grid>
+
+       
+
     </ContentPage.Content>
 </ContentPage>

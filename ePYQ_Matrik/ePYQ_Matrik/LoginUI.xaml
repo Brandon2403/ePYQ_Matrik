@@ -82,8 +82,9 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Label.GestureRecognizers>
             </Label>
-            
-       
+
+            <Button Text="Sign in with Google" Clicked="OnGoogleSignInButtonClicked" />
+
 
         </StackLayout>
     </ContentPage.Content>

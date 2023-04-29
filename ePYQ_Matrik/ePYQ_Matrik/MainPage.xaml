@@ -1,126 +1,164 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:vm="clr-namespace:ePYQ_Matrik"
-             x:Class="ePYQ_Matrik.MainPage">
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ePYQ_Matrik.MainPage" NavigationPage.HasBackButton="False" NavigationPage.HasNavigationBar="False">
 
     <ContentPage.BindingContext>
         <vm:ListVM/>
     </ContentPage.BindingContext>
 
-    <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ControlTemplate  
+   		        x:Key="TabItemTemplate">
+                <Grid  
+   			        RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image  
+   				        Grid.Row="0"  
+   				        VerticalOptions="Center"  
+   				        HorizontalOptions="Center"  
+                        Margin="2"  
+   				        Source="{TemplateBinding CurrentIcon}" />
+                    <!--set ` TextTransform="Lowercase"` for Label here-->
+                    <Label  
+   				        Grid.Row="1"  
+   				        HorizontalOptions="Center"  
+   				        FontSize="{TemplateBinding FontSize}"  
+   				        Text="{TemplateBinding Text}"  
+                        TextTransform="None"  
+   				        TextColor="{TemplateBinding CurrentTextColor}" />
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+    <xct:TabView TabStripPlacement="Bottom" TabIndicatorColor="Purple" TabStripHeight="60" >
+        <xct:TabViewItem  
+            Icon="https://cdn-icons-png.flaticon.com/512/25/25694.png"
+            Text="Home"
+            FontSize="18" 
+            ControlTemplate="{StaticResource TabItemTemplate}"  
+            TextColorSelected="Purple">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <!--1st row-->
-            <Frame Grid.Row="0"
-                   Margin="23, 116, 0, 0"
-                   AbsoluteLayout.LayoutBounds="0,0,344,220"
-                   HeightRequest="189"
-                   WidthRequest="344"
-                   HorizontalOptions="Start"
-                   HasShadow="False"
-                   CornerRadius="30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-                <Frame.Background>
-                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                        <GradientStop Color="#CE7EF3" Offset="0.199" />
-                        <GradientStop Color="#CE7EF3" Offset="0.2188" />
-                        <GradientStop Color="#C55EF5" Offset="0.4062" />
-                        <GradientStop Color="#6A0A97" Offset="1" />
-                    </LinearGradientBrush>
-                </Frame.Background>
+                <!--1st row-->
+                <Label Text="Hello student!"
+                   FontAttributes="Bold" 
+                   FontSize="20" 
+                   TextColor="#0E0C0C"
+                   Margin="46"
+                   HorizontalOptions="CenterAndExpand"/>
+                <RelativeLayout>
+                    <Frame
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.06}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.9}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.46}"
+                        BackgroundColor="#CE7EF3"
+                        CornerRadius="30">
+                        <Label
+                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}"
+                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.8}"
+                            Text="Start &#10;Learning"
+                            FontSize="38"
+                            HorizontalTextAlignment="Start"
+                            FontAttributes="Bold"
+                            TextColor="#FFFFFF"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Start"/>
+                    </Frame>
 
-                <Label  Text="Start Learning"
-                        FontFamily="Inter"
-                        FontSize="36"
+                    <Image
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.6}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.22}"
+                        Source="https://cdn-icons-png.flaticon.com/512/747/747086.png"
+                        Aspect="AspectFit"
+                        WidthRequest="125"
+                        HeightRequest="125"/>
+                    <SearchBar
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.52}"                  
+                        Placeholder="What do you want to learn?"
+                        PlaceholderColor="#7F7F7F"
+                        WidthRequest="300"
+                        HorizontalOptions="CenterAndExpand"
+                        CancelButtonColor="#000000"
+                        xct:CornerRadiusEffect.CornerRadius="30"
+                        BackgroundColor="#FFFFFF"
+                        FontSize="Small"/>
+                </RelativeLayout>
+
+
+
+                <!--2nd row-->
+                <RelativeLayout>
+                    <Label
+                        Text="Latest Past Year Questions"
+                        TextColor="Black"
                         FontAttributes="Bold"
-                        TextColor="#FFFFFF"
-                        HeightRequest="100"
-                        WidthRequest="148"
-                        Margin="5,18,0,0"
-                        VerticalOptions="Start"
-                        HorizontalOptions="Start"
-                        />
-            </Frame>
-            
-                <Image  Source="https://cdn-icons-png.flaticon.com/512/747/747086.png"
-                        WidthRequest="129"
-                        HeightRequest="125"
-                        Margin="216, 132, 0, 0"
-                        HorizontalOptions="Start"
-                        VerticalOptions="Start" />
+                        FontSize="20"
+                        HorizontalTextAlignment="Start"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.08}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.7}" />
+                    <Image
+                        Source="https://cdn-icons-png.flaticon.com/512/4344/4344873.png"
+                        HeightRequest="58"
+                        HorizontalOptions="End"
+                        Aspect="AspectFit"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.67}" />
+                </RelativeLayout>
 
-            <SearchBar Placeholder="What do you want to learn?"
-                       BackgroundColor="#FFFFFF"
-                       PlaceholderColor="#7F7F7F"
-                       CancelButtonColor="#000000"
-                       HeightRequest="44"
-                       WidthRequest="319"
-                       Margin="38, 272, 0, 0"
-                       VerticalOptions="Start"
-                       HorizontalOptions="Start"
-                       FontSize="Medium"
-                       FontFamily="Helvetica Neue">
-            </SearchBar>
-            
-            
-            <!--2nd row-->
-            <Label Grid.Row="1"
-                   Text="Latest Past Year Questions"
-                   TextColor="Black"
-                   FontAttributes="Bold"
-                   FontSize="20"
-                   HorizontalOptions="Start"
-                   Margin="30, 24"/>
-            <Image Grid.Row="1"
-                   Source="https://cdn-icons-png.flaticon.com/512/4344/4344873.png"
-                   HeightRequest="58"
-                   HorizontalOptions="End"
-                   Aspect="AspectFit" Margin="0,0,48,0"/>
-            
-            <!--3rd row, the list view-->
 
-            <CollectionView 
-                Grid.Row="2"
-                BackgroundColor="Yellow"
-                ItemsSource="{Binding MyItems}">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical"
+                <!--3rd row, the list view-->
+                <CollectionView 
+                        Grid.Row="2" Grid.Column="0"
+                        HorizontalScrollBarVisibility="Always"
+                        Margin="0, -124, 0, 32"
+                        ItemsSource="{Binding MyItems}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
                                       Span="2"
                                       VerticalItemSpacing="10"
                                       HorizontalItemSpacing="10" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame Padding="10"
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10"
                                BackgroundColor="#E5E1E7"
                                CornerRadius="20"
                                HasShadow="False">
-                            <StackLayout>
-                                <Frame CornerRadius="20"
+                                <StackLayout>
+                                    <Frame CornerRadius="20"
                                        BackgroundColor="Transparent"
                                        HasShadow="False"
                                        HeightRequest="168"
                                        WidthRequest="160">
-                                    <Image Source="{Binding ImageUrl}"
+                                        <Image Source="{Binding ImageUrl}"
                                            Aspect="AspectFill"
                                            WidthRequest="116"
                                            HeightRequest="132"
                                            VerticalOptions="StartAndExpand"
                                            HorizontalOptions="CenterAndExpand"
                                            Margin="8" />
-                                </Frame>
+                                    </Frame>
 
-                                <Label Text="{Binding Title}"
+                                    <Label Text="{Binding Title}"
                                        FontAttributes="Bold"
                                        FontSize="14"
                                        TextColor="Black"
@@ -131,12 +169,12 @@
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"
                                        LineHeight="1.2">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenPdfCommand}" />
-                                    </Label.GestureRecognizers>
-                                </Label>
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenPdfCommand}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
 
-                                <Label Text="{Binding Description}"
+                                    <Label Text="{Binding Description}"
                                        FontAttributes="None"
                                        FontSize="10"
                                        TextColor="Black"
@@ -147,17 +185,116 @@
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"
                                        LineHeight="0.6" />
-                            </StackLayout>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </xct:TabViewItem>
 
+        <xct:TabViewItem 
+            Icon="https://cdn-icons-png.flaticon.com/512/61/61205.png"
+            Text="User"
+            FontSize="18"
+            ControlTemplate="{StaticResource TabItemTemplate}"  
+            TextColorSelected="Purple">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-        </Grid>
+                <Label
+                   Text="User Profile"
+                   FontAttributes="Bold" 
+                   FontSize="20" 
+                   TextColor="#0E0C0C"
+                   Margin="46"
+                   HorizontalOptions="CenterAndExpand"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=profileLabel, Property=Height, Factor=1}"
+                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}">
+                </Label>
 
-       
+                <Frame Grid.Row="1"  
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.06}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.9}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.46}"
+                        BackgroundColor="#CE7EF3" 
+                       HorizontalOptions="CenterAndExpand" WidthRequest="300"
+                        CornerRadius="60">
+                    <Frame.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#CE7EF3" Offset="0.199" />
+                            <GradientStop Color="#CE7EF3" Offset="0.2188" />
+                            <GradientStop Color="#C55EF5" Offset="0.4062" />
+                            <GradientStop Color="#6A0A97" Offset="1" />
+                        </LinearGradientBrush>
+                    </Frame.Background>
 
-    </ContentPage.Content>
+                    <Frame Margin="0" Padding="0" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="100" BackgroundColor="White" HasShadow="False">
+                        <Image Source="https://wonder-day.com/wp-content/uploads/2020/10/wonder-day-among-us-png-29.png" Aspect="Fill" />
+                    </Frame>
+                </Frame>
+
+                <Label x:Name="profileLabel" 
+                       Grid.Row="2"
+                       Margin="16"
+                       Text="Brandon Ahmad Muaz"
+                       HorizontalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       FontSize="20"
+                       TextColor="Black"
+                       HorizontalOptions="CenterAndExpand"
+                       RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=profilePicStack, Property=Y, Factor=1, Constant=90}"
+                       RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-95}"/>
+
+                <Label Text="bcs22090026@student.uts.edu.my" 
+                       Grid.Row="2"
+                       FontAttributes="None"
+                       FontSize="Small"
+                       Margin="42"
+                       TextColor="Black"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="CenterAndExpand"
+                       RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=profileLabel, Property=Height, Factor=1, Constant=12}"
+                       RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-70}"/>
+
+                <Label Text="Kolej Matrikulasi Labuan" Grid.Row="2"
+                       FontAttributes="Bold"
+                       FontSize="20"
+                       TextColor="Black"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       HeightRequest="64"
+                       Margin="0, 88, 0, 0"
+                       RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=profileLabel, Property=Height, Factor=1, Constant=90}"
+                       RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-90}"/>
+
+                <Button Text="Edit Profile" Grid.Row="3"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        TextColor="#AC80F4"
+                        BackgroundColor="White"
+                        BorderColor="#AC80F4"
+                        BorderWidth="1.1"
+                        CornerRadius="30"
+                        HeightRequest="60"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=profileLabel, Property=Height, Factor=1.5, Constant=100}"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-100}"/>
+
+            </Grid>
+        </xct:TabViewItem>
+
+    </xct:TabView>
 </ContentPage>

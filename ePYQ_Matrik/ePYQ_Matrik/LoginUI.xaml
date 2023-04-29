@@ -1,17 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ePYQ_Matrik.LoginUI">
+             x:Class="ePYQ_Matrik.LoginUI" NavigationPage.HasBackButton="False" NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout 
             Padding="40" 
-            VerticalOptions="Center" 
-            HorizontalOptions="FillAndExpand">
+            VerticalOptions="FillAndExpand" 
+            HorizontalOptions="FillAndExpand" BackgroundColor="White">
 
-            <Image Source="logo.png"
+            <Label Grid.Row="0" 
+                       Text="Welcome!" FontSize="20" TextColor="Black" FontAttributes="Bold"
+                       VerticalOptions="StartAndExpand" HorizontalOptions="Center" />
+
+            <Image Source="appIcon.png"
                    WidthRequest="240"
-                   HeightRequest="240"
-                   Margin="0,-78,0,-52">
+                   HeightRequest="240">
             </Image>
 
             <Grid>
@@ -71,7 +74,7 @@
             </StackLayout>
 
 
-            <Label HorizontalOptions="Center" Margin="28" VerticalOptions="Center" >
+            <Label HorizontalOptions="Center" Margin="28" VerticalOptions="Center" HorizontalTextAlignment="Center" >
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Don't have an account?" TextColor="Gray"/>

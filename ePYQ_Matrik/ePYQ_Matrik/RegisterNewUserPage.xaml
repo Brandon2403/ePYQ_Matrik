@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ePYQ_Matrik.RegisterNewUserPage">
+             x:Class="ePYQ_Matrik.RegisterNewUserPage" NavigationPage.HasBackButton="False" NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
         <StackLayout 
             Padding="40" 
-            VerticalOptions="Center" 
+            VerticalOptions="FillAndExpand" BackgroundColor="White"
             HorizontalOptions="FillAndExpand">
 
             <Image 
-                   Source="logo.png"
+                   Source="appIcon.png"
                    WidthRequest="240"
                    HeightRequest="240"
-                   Margin="0,-78,0,-52">
+                   Margin="0,0,0,0">
             </Image>
 
             <Label 
@@ -105,11 +105,12 @@
                 CornerRadius="48"
                 Clicked="RegisterButton_Clicked" />
 
-            <Label HorizontalOptions="Center">
+            <Label HorizontalOptions="Center" HorizontalTextAlignment="Center">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Already have an account? " TextColor="Gray"/>
                         <Span Text="LOG IN" TextColor="Blue" FontAttributes="Bold" />
+                        
                     </FormattedString>
                 </Label.FormattedText>
                 <Label.GestureRecognizers>

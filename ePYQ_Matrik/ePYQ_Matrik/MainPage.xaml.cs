@@ -15,5 +15,26 @@ namespace ePYQ_Matrik
             InitializeComponent();
          
         }
+
+        public class AdaptiveLabel : Label
+        {
+            public AdaptiveLabel()
+            {
+                double fontSize = Device.GetNamedSize(NamedSize.Default, typeof(Label));
+                double width = Application.Current.MainPage.Width;
+
+                FontSize = Math.Min(fontSize, width / 20);
+            }
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TabViewItem_SizeChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

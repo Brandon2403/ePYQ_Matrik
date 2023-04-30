@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,7 @@ namespace ePYQ_Matrik
             InitializeComponent();
 
             //MainPage = new MainPage();
-
+            
             MainPage = new NavigationPage(new LoginUI());
         }
 

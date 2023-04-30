@@ -13,16 +13,28 @@ namespace ePYQ_Matrik
         public MainPage()
         {
             InitializeComponent();
+         
+        }
 
-            // Create an instance of the ListVM class and pass the MyGrid instance to its constructor
-            var listVM = new ListVM(MyGrid);
+        public class AdaptiveLabel : Label
+        {
+            public AdaptiveLabel()
+            {
+                double fontSize = Device.GetNamedSize(NamedSize.Default, typeof(Label));
+                double width = Application.Current.MainPage.Width;
 
-            var viewModel = new ListVM(MyGrid);
-            Content = viewModel.Content;
+                FontSize = Math.Min(fontSize, width / 20);
+            }
+        }
 
+        private void Button_Clicked(object sender, EventArgs e)
+        {
 
-            // Set the binding context to the ListVM instance
-            BindingContext = listVM;
+        }
+
+        private void TabViewItem_SizeChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

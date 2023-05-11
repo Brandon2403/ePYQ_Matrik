@@ -42,7 +42,7 @@
     <xct:TabView TabStripPlacement="Bottom" TabIndicatorColor="Purple" TabStripHeight="60" >
 
         <!--all files page-->
-        <xct:TabViewItem  
+        <xct:TabViewItem IsSelected="False" 
             Icon="https://icons-for-free.com/iconfiles/png/512/check+document+file+icon+icon-1320196654394535651.png"
             FontSize="18" 
             ControlTemplate="{StaticResource TabItemTemplate}"  
@@ -150,6 +150,7 @@
 
         <!--homepage-->
         <xct:TabViewItem  
+            IsSelected="True"
             Icon="https://cdn-icons-png.flaticon.com/512/25/25694.png"
             FontSize="18" 
             ControlTemplate="{StaticResource TabItemTemplate}"  
@@ -305,7 +306,7 @@
 
         
         <!--userInfo page-->
-        <xct:TabViewItem 
+        <xct:TabViewItem  IsSelected="False"
             Icon="https://cdn-icons-png.flaticon.com/512/61/61205.png"       
             FontSize="18"
             ControlTemplate="{StaticResource TabItemTemplate}"  
@@ -378,8 +379,8 @@
                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=profileLabel, Property=Height, Factor=1, Constant=12}"
                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-70}"/>
 
-             
-                <Button Text="Edit Profile" Grid.Row="3"
+                <!--
+                  <Button Text="Edit Profile" Grid.Row="3"
                         FontAttributes="Bold"
                         FontSize="20"
                         TextColor="#AC80F4"
@@ -392,7 +393,8 @@
                         VerticalOptions="Center"
                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=profileLabel, Property=Height, Factor=1.5, Constant=100}"
                         RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-100}"/>
-
+                -->
+              
             </Grid>
         </xct:TabViewItem>
 

@@ -60,7 +60,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!--1st row-->
-                <RelativeLayout Grid.Row="0" Grid.Column="0" BackgroundColor="Yellow">
+                <RelativeLayout Grid.Row="0" Grid.Column="0" Margin="0, 0, 0, -82">
                         <Label 
                                 Text="Latest Past Year Questions"
                                 TextColor="Black"
@@ -68,26 +68,14 @@
                                 FontSize="20"
                                 HorizontalTextAlignment="Start"
                                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.08}"
-                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}" />
+                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.3}" />
                         <Image
                                 Source="https://cdn-icons-png.flaticon.com/512/4344/4344873.png"
                                 HeightRequest="58"
                                 HorizontalOptions="End"
                                 Aspect="AspectFit"
                                 RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}"
-                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.1}" />
-
-                    <SearchBar Grid.Row="1" Grid.Column="0"
-                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.08}"
-                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}"
-                            Placeholder="What do you want to learn?" 
-                            PlaceholderColor="#7F7F7F"
-                            WidthRequest="320" 
-                            HorizontalOptions="CenterAndExpand"
-                            CancelButtonColor="#000000"
-                            xct:CornerRadiusEffect.CornerRadius="30"
-                            BackgroundColor="#FFFFFF"
-                            FontSize="Small"/>
+                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}" />
 
                 </RelativeLayout>
 
@@ -95,9 +83,8 @@
 
                 <!--3rd row, the list view-->
                 <CollectionView 
-                        Grid.Row="2" Grid.Column="0"
+                        Grid.Row="1" Grid.Column="0" Margin="0,0,0,32"
                         HorizontalScrollBarVisibility="Always"
-                        Margin="0"
                         ItemsSource="{Binding MyItems}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical"

@@ -3,7 +3,9 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ePYQ_Matrik.Services;
-
+using System.Collections.Generic;
+using SQLite;
+using ePYQ_Matrik;
 
 namespace ePYQ_Matrik
 {
@@ -13,6 +15,7 @@ namespace ePYQ_Matrik
         public LoginUI()
         {
             InitializeComponent();
+            BindingContext = new { UserLogin = new userLogin() };
         }
 
         private bool rememberMe = false;
@@ -50,15 +53,25 @@ namespace ePYQ_Matrik
                 }
                 else
                 {
+
                     // TODO: Authenticate the user using your app's authentication system
                     // Example:
-                    if (UsernameEntry.Text == "admin" && PasswordEntry.Text == "123")
+                    var user = userLogin.Table<userLogin>().FirstOrDefault(u => u.username == UserLogin.username && u.password == UserLogin.password);
+                    if (UsernameEntry.Text == user.username && PasswordEntry.Text == user.password)
+
                     {
                         if (RememberMe)
                         {
-                            // Save the user's credentials
-                            Preferences.Set("Username", UsernameEntry.Text);
-                            Preferences.Set("Password", PasswordEntry.Text);
+                            // Save the user's credentials to the database
+                            var user1 = new userLogin
+                            {
+                                username = UsernameEntry.Text,
+                                password = PasswordEntry.Text
+                            };
+
+                            string DatabasePath = null;
+                            var database = new userLogin(DatabasePath);
+                            database.InsertuserLogin(user1);
                         }
 
                         await Navigation.PushAsync(new MainPage());
@@ -120,9 +133,6 @@ namespace ePYQ_Matrik
 
             GoogleSignInClicked = false;
         }
-
-
-
     }
 
 }

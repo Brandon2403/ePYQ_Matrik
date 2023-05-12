@@ -2,20 +2,23 @@
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ePYQ_Matrik.Services;
 using System.Collections.Generic;
 using SQLite;
-using ePYQ_Matrik;
+using ePYQ_Matrik.Model;
+using ePYQ_Matrik.ViewModel;
 
 namespace ePYQ_Matrik
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginUI : ContentPage
     {
+        private DatabaseService databaseService; // Declare the databaseService variable
         public LoginUI()
         {
             InitializeComponent();
-            BindingContext = new { UserLogin = new userLogin() };
+            string databasePath = "C:\\Users\\User\\source\\repos\\ePYQ_Matrik\\ePYQ_Matrik\\ePYQ_Matrik\\Model\\mydatabase.db";
+            databaseService = new DatabaseService(databasePath);
+
         }
 
         private bool rememberMe = false;
@@ -56,22 +59,20 @@ namespace ePYQ_Matrik
 
                     // TODO: Authenticate the user using your app's authentication system
                     // Example:
-                    var user = userLogin.Table<userLogin>().FirstOrDefault(u => u.username == UserLogin.username && u.password == UserLogin.password);
-                    if (UsernameEntry.Text == user.username && PasswordEntry.Text == user.password)
 
+                    var login = new userLogin();
+                    if (UsernameEntry.Text == login.username && PasswordEntry.Text == login.password)
                     {
                         if (RememberMe)
                         {
                             // Save the user's credentials to the database
-                            var user1 = new userLogin
+                            var user = new userLogin
                             {
                                 username = UsernameEntry.Text,
                                 password = PasswordEntry.Text
                             };
 
-                            string DatabasePath = null;
-                            var database = new userLogin(DatabasePath);
-                            database.InsertuserLogin(user1);
+                            databaseService.InsertuserLogin(user);
                         }
 
                         await Navigation.PushAsync(new MainPage());
@@ -84,20 +85,20 @@ namespace ePYQ_Matrik
             }
         }
 
-
-        protected override void OnAppearing()
+        protected override void OnDisappearing()
         {
-            base.OnAppearing();
+            base.OnDisappearing();
 
-            // Check if the user's credentials were previously saved
-            string savedUsername = Preferences.Get("Username", null);
-            string savedPassword = Preferences.Get("Password", null);
-
-            if (savedUsername != null && savedPassword != null)
+            // Save the entered username and password when the view is closed
+            if (RememberMe)
             {
-                UsernameEntry.Text = savedUsername;
-                PasswordEntry.Text = savedPassword;
-                RememberMe = true;
+                Preferences.Set("Username", UsernameEntry.Text);
+                Preferences.Set("Password", PasswordEntry.Text);
+            }
+            else
+            {
+                Preferences.Remove("Username");
+                Preferences.Remove("Password");
             }
         }
 

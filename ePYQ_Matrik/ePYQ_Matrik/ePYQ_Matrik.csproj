@@ -11,6 +11,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Model\mydatabase.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Release\netstandard2.0\ePYQ_Matrik.deps.json" />
+    <Content Include="Model\mydatabase.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netstandard2.0\ePYQ_Matrik.dll" />
+    <None Include="bin\Release\netstandard2.0\ePYQ_Matrik.dll" />
+    <None Include="bin\Release\netstandard2.0\ePYQ_Matrik.pdb" />
+    <None Include="obj\Debug\netstandard2.0\ref\ePYQ_Matrik.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Google.Apis.Auth" Version="1.60.0" />
     <PackageReference Include="Google.Apis.Oauth2.v2" Version="1.60.0.1869" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
@@ -28,10 +52,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="LoginUI.xaml">
+    <EmbeddedResource Update="View\LoginUI.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="RegisterNewUserPage.xaml">
+    <EmbeddedResource Update="View\RegisterNewUserPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

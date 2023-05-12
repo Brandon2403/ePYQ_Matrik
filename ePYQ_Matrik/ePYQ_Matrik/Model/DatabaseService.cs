@@ -1,28 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 using SQLite;
-using ePYQ_Matrik;
-namespace ePYQ_Matrik
-{
 
-    // Define a class for the user login table
+namespace ePYQ_Matrik.Model
+{
     public class userLogin : INotifyPropertyChanged
     {
-        public int _userid;
-        public string _username;
-        public string _email;
-        public string _password;
-
-        public userLogin()
-        {
-        }
-
-        public userLogin(string databasePath)
-        {
-            DatabasePath = databasePath;
-        }
+        private int _userid;
+        private string _username;
+        private string _email;
+        private string _password;
 
         [PrimaryKey, AutoIncrement]
         public int userid
@@ -65,23 +51,27 @@ namespace ePYQ_Matrik
             }
         }
 
-        public string DatabasePath { get; }
-
         public event PropertyChangedEventHandler PropertyChanged;
-
-        internal static object Table<T>()
-        {
-            throw new NotImplementedException();
-        }
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+    }
 
-        internal void InsertuserLogin(object user)
+    public class DatabaseService
+    {
+        private SQLiteConnection connection;
+
+        public DatabaseService(string databasePath = "C:\\Users\\User\\source\\repos\\ePYQ_Matrik\\ePYQ_Matrik\\ePYQ_Matrik\\Model\\mydatabase.db")
         {
-            throw new NotImplementedException();
+            connection = new SQLiteConnection(databasePath);
+            connection.CreateTable<userLogin>();
+        }
+
+        public void InsertuserLogin(userLogin user)
+        {
+            connection.Insert(user);
         }
     }
 }

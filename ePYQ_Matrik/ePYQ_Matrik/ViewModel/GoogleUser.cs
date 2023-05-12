@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ePYQ_Matrik
+namespace ePYQ_Matrik.ViewModel
 {
     public class GoogleUser
     {

@@ -8,9 +8,7 @@ using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Auth.OAuth2.Web;
 using Google.Apis.Util.Store;
 
-
-
-namespace ePYQ_Matrik.Services
+namespace ePYQ_Matrik.ViewModel
 {
     public class GoogleAuthenticationService
     {

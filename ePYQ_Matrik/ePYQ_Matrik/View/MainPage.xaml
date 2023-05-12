@@ -1,11 +1,12 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:vm="clr-namespace:ePYQ_Matrik"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:vm1="clr-namespace:ePYQ_Matrik.ViewModel"
              x:Class="ePYQ_Matrik.MainPage" NavigationPage.HasBackButton="False" NavigationPage.HasNavigationBar="False">
 
     <ContentPage.BindingContext>
-        <vm:ListVM/>
+        <vm1:ListVM/>
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>

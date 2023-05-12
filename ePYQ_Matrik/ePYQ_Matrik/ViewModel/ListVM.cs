@@ -7,7 +7,7 @@ using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace ePYQ_Matrik
+namespace ePYQ_Matrik.ViewModel
 {
     public class MyItem
     {
@@ -24,7 +24,7 @@ namespace ePYQ_Matrik
 
         public ListVM()
         {
-            
+
             // Initialize your collection of items
             MyItems = new ObservableCollection<MyItem>
             {
@@ -69,7 +69,7 @@ namespace ePYQ_Matrik
             };
         }
 
-        
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

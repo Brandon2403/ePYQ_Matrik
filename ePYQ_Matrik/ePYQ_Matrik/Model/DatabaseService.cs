@@ -63,12 +63,15 @@ namespace ePYQ_Matrik.Model
     {
         private SQLiteConnection connection;
 
-        public DatabaseService(string databasePath = "C:\\Users\\User\\source\\repos\\ePYQ_Matrik\\ePYQ_Matrik\\ePYQ_Matrik\\Model\\mydatabase.db")
+        public DatabaseService(string databasePath = "C:\\Users\\USER\\source\\repos\\ePYQ_Matrik\\ePYQ_Matrik\\ePYQ_Matrik\\Model\\mydatabase.db")
         {
             connection = new SQLiteConnection(databasePath);
             connection.CreateTable<userLogin>();
         }
-
+        public userLogin GetUserByEmail(string email)
+        {
+            return connection.Table<userLogin>().FirstOrDefault(u => u.email == email);
+        }
         public void InsertuserLogin(userLogin user)
         {
             connection.Insert(user);

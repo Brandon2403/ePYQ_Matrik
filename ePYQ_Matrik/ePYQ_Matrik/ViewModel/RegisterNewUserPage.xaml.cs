@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ePYQ_Matrik.ViewModel;
+using ePYQ_Matrik.Model;
 
 namespace ePYQ_Matrik
 {
@@ -43,11 +44,23 @@ namespace ePYQ_Matrik
             }
 
             // TODO: Add code to register new user in database
+            var newUser = new userLogin
+            {
+                username = UsernameEntry.Text,
+                password = PasswordEntry.Text
+            };
+
+            // Create an instance of DatabaseService
+            var databaseService = new DatabaseService();
+
+            // Insert the new user into the database using the instance
+            databaseService.InsertuserLogin(newUser);
 
             // Show success message and navigate to login page
             await DisplayAlert("Success", "Your account has been created.", "OK");
             await Navigation.PopAsync();
         }
+
 
         private async void GoogleSignInButton_Clicked(object sender, EventArgs e)
         {
@@ -62,16 +75,36 @@ namespace ePYQ_Matrik
             {
                 var googleUser = await GoogleAuthenticationService.Instance.LoginAsync();
 
-                // TODO: Use the googleUser object to sign in the user or create a new account.
-
-                // Example:
                 if (googleUser != null)
                 {
-                    // Save user information to database or local storage
-                    await DisplayAlert("Success", $"Welcome, {googleUser.Name}!", "OK");
+                    var databaseService = new DatabaseService(); // Create an instance of DatabaseService
 
-                    // Redirect the user to the main page
-                    await Navigation.PushAsync(new MainPage());
+                    // Check if the user already exists in the database using their email or any other unique identifier
+                    var existingUser = databaseService.GetUserByEmail(googleUser.Email);
+
+                    if (existingUser != null)
+                    {
+                        // User exists, perform sign-in
+                        await DisplayAlert("Success", $"Welcome back, {existingUser.username}!", "OK");
+                        await Navigation.PushAsync(new MainPage());
+                    }
+                    else
+                    {
+                        // User does not exist, create a new account
+                        var newUser = new userLogin
+                        {
+                            username = googleUser.Name,
+                            email = googleUser.Email,
+                            // Set a default password or generate a random one
+                            password = GenerateRandomPassword()
+                        };
+
+                        // Insert the new user into the database
+                        databaseService.InsertuserLogin(newUser);
+
+                        await DisplayAlert("Success", $"Welcome, {newUser.username}!", "OK");
+                        await Navigation.PushAsync(new MainPage());
+                    }
                 }
             }
             catch (Exception ex)
@@ -84,9 +117,18 @@ namespace ePYQ_Matrik
             }
         }
 
+
+
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             Navigation.PushAsync(new LoginUI());
+        }
+        private string GenerateRandomPassword()
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var random = new Random();
+            var password = new string(Enumerable.Repeat(chars, 8).Select(s => s[random.Next(s.Length)]).ToArray());
+            return password;
         }
     }
 }

@@ -3,87 +3,48 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using SQLite;
 using System.IO;
+using System.Numerics;
 
 namespace ePYQ_Matrik
 {
     public class DatabaseService
     {
-        private readonly SQLiteConnection connection;
+        private  SQLiteConnection connection;
 
         public DatabaseService(string databasePath)
         {
             connection = new SQLiteConnection(databasePath);
-            connection.CreateTable<UserLogin>();
         }
 
-        public void InsertUserLogin(UserLogin user)
+        public void InsertUserLogin(userLogin user)
         {
             connection.Insert(user);
         }
 
-        public List<UserLogin> GetAllUserLogins()
+        public List<userLogin> GetAllUserLogins()
         {
-            return connection.Table<UserLogin>().ToList();
+            return connection.Table<userLogin>().ToList();
         }
-        public UserLogin GetUserByEmail(string email)
+        public userLogin GetUserByEmail(string email)
         {
-            return connection.Table<UserLogin>().FirstOrDefault(u => u.Email == email);
+            return connection.Table<userLogin>().FirstOrDefault(u => u.Email == email);
         }
     }
 
-    public class UserLogin : INotifyPropertyChanged
+    public class userLogin
     {
-        private int _userId;
-        private string _username;
-        private string _email;
-        private string _password;
-
         [PrimaryKey, AutoIncrement]
-        public int UserId
-        {
-            get { return _userId; }
-            set
-            {
-                _userId = value;
-                OnPropertyChanged(nameof(UserId));
-            }
-        }
+        public int userID { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
 
-        public string Username
-        {
-            get { return _username; }
-            set
-            {
-                _username = value;
-                OnPropertyChanged(nameof(Username));
-            }
-        }
 
-        public string Email
-        {
-            get { return _email; }
-            set
-            {
-                _email = value;
-                OnPropertyChanged(nameof(Email));
-            }
-        }
-
-        public string Password
-        {
-            get { return _password; }
-            set
-            {
-                _password = value;
-                OnPropertyChanged(nameof(Password));
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        /*public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        }*/
     }
 }

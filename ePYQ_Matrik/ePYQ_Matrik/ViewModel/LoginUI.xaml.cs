@@ -61,13 +61,13 @@ namespace ePYQ_Matrik
                     // TODO: Authenticate the user using your app's authentication system
                     // Example:
 
-                    var login = new UserLogin();
+                    var login = new userLogin();
                     if (UsernameEntry.Text == login.Username && PasswordEntry.Text == login.Password)
                     {
                         if (RememberMe)
                         {
                             // Save the user's credentials to the database
-                            var user = new UserLogin
+                            var user = new userLogin
                             {
                                 Username = UsernameEntry.Text,
                                 Password = PasswordEntry.Text

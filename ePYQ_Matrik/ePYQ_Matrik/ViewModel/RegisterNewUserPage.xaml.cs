@@ -88,7 +88,7 @@ namespace ePYQ_Matrik
                     if (existingUser != null)
                     {
                         // User exists, perform sign-in
-                        await DisplayAlert("Success", $"Welcome back, {existingUser.username}!", "OK");
+                        await DisplayAlert("Success", $"Welcome back, {existingUser.Username}!", "OK");
                         await Navigation.PushAsync(new MainPage());
                     }
                     else

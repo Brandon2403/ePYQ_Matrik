@@ -23,6 +23,10 @@ namespace ePYQ_Matrik
         {
             return connection.Table<UserLogin>().ToList();
         }
+        public UserLogin GetUserByEmail(string email)
+        {
+            return connection.Table<UserLogin>().FirstOrDefault(u => u.Email == email);
+        }
     }
 
     public class UserLogin : INotifyPropertyChanged

@@ -60,15 +60,15 @@ namespace ePYQ_Matrik
                     // Example:
 
                     var login = new UserLogin();
-                    if (UsernameEntry.Text == login.username && PasswordEntry.Text == login.password)
+                    if (UsernameEntry.Text == login.Username && PasswordEntry.Text == login.Password)
                     {
                         if (RememberMe)
                         {
                             // Save the user's credentials to the database
                             var user = new UserLogin
                             {
-                                username = UsernameEntry.Text,
-                                password = PasswordEntry.Text
+                                Username = UsernameEntry.Text,
+                                Password = PasswordEntry.Text
                             };
 
                             databaseService.InsertUserLogin(user);

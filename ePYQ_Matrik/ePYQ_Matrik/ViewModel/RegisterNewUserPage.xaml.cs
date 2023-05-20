@@ -14,7 +14,7 @@ namespace ePYQ_Matrik
     public partial class RegisterNewUserPage : ContentPage
     {
         private bool isGoogleSignInInProgress;
-        private DatabaseService databaseService;
+        private readonly DatabaseService databaseService;
 
         public RegisterNewUserPage()
         {

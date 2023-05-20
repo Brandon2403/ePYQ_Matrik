@@ -12,7 +12,7 @@ namespace ePYQ_Matrik
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginUI : ContentPage
     {
-        private DatabaseService databaseService; // Declare the databaseService variable
+        private readonly DatabaseService databaseService; // Declare the databaseService variable
         public LoginUI()
         {
             InitializeComponent();

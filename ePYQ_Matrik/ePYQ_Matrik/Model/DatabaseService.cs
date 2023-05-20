@@ -8,7 +8,7 @@ namespace ePYQ_Matrik
 {
     public class DatabaseService
     {
-        private SQLiteConnection connection;
+        private readonly SQLiteConnection connection;
 
         public DatabaseService(string databasePath)
         {

@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 using System.Collections.Generic;
 using SQLite;
 using ePYQ_Matrik.ViewModel;
+using System.IO;
 
 namespace ePYQ_Matrik
 {
@@ -15,8 +16,9 @@ namespace ePYQ_Matrik
         public LoginUI()
         {
             InitializeComponent();
-            string databasePath = "C:\\Users\\User\\source\\repos\\ePYQ_Matrik\\ePYQ_Matrik\\ePYQ_Matrik\\Model\\mydatabase.db";
+            string databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "mydatabase.db");
             databaseService = new DatabaseService(databasePath);
+
 
         }
 

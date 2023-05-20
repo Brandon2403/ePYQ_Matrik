@@ -4,7 +4,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Collections.Generic;
 using SQLite;
-using ePYQ_Matrik.Model;
 using ePYQ_Matrik.ViewModel;
 
 namespace ePYQ_Matrik
@@ -60,19 +59,19 @@ namespace ePYQ_Matrik
                     // TODO: Authenticate the user using your app's authentication system
                     // Example:
 
-                    var login = new userLogin();
+                    var login = new UserLogin();
                     if (UsernameEntry.Text == login.username && PasswordEntry.Text == login.password)
                     {
                         if (RememberMe)
                         {
                             // Save the user's credentials to the database
-                            var user = new userLogin
+                            var user = new UserLogin
                             {
                                 username = UsernameEntry.Text,
                                 password = PasswordEntry.Text
                             };
 
-                            databaseService.InsertuserLogin(user);
+                            databaseService.InsertUserLogin(user);
                         }
 
                         await Navigation.PushAsync(new MainPage());

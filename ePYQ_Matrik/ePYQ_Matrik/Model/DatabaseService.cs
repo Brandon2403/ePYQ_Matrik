@@ -1,53 +1,75 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using SQLite;
 
-namespace ePYQ_Matrik.Model
+namespace ePYQ_Matrik
 {
-    public class userLogin : INotifyPropertyChanged
+    public class DatabaseService
     {
-        private int _userid;
+        private SQLiteConnection connection;
+
+        public DatabaseService(string databasePath)
+        {
+            connection = new SQLiteConnection(databasePath);
+            connection.CreateTable<UserLogin>();
+        }
+
+        public void InsertUserLogin(UserLogin user)
+        {
+            connection.Insert(user);
+        }
+
+        public List<UserLogin> GetAllUserLogins()
+        {
+            return connection.Table<UserLogin>().ToList();
+        }
+    }
+
+    public class UserLogin : INotifyPropertyChanged
+    {
+        private int _userId;
         private string _username;
         private string _email;
         private string _password;
 
         [PrimaryKey, AutoIncrement]
-        public int userid
+        public int UserId
         {
-            get { return _userid; }
+            get { return _userId; }
             set
             {
-                _userid = value;
-                OnPropertyChanged(nameof(userid));
+                _userId = value;
+                OnPropertyChanged(nameof(UserId));
             }
         }
 
-        public string username
+        public string Username
         {
             get { return _username; }
             set
             {
                 _username = value;
-                OnPropertyChanged(nameof(username));
+                OnPropertyChanged(nameof(Username));
             }
         }
 
-        public string email
+        public string Email
         {
             get { return _email; }
             set
             {
                 _email = value;
-                OnPropertyChanged(nameof(email));
+                OnPropertyChanged(nameof(Email));
             }
         }
 
-        public string password
+        public string Password
         {
             get { return _password; }
             set
             {
                 _password = value;
-                OnPropertyChanged(nameof(password));
+                OnPropertyChanged(nameof(Password));
             }
         }
 
@@ -56,25 +78,6 @@ namespace ePYQ_Matrik.Model
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
-
-    public class DatabaseService
-    {
-        private SQLiteConnection connection;
-
-        public DatabaseService(string databasePath = "C:\\Users\\User\\source\\repos\\ePYQ_Matrik\\ePYQ_Matrik\\ePYQ_Matrik\\Model\\myDB.db")
-        {
-            connection = new SQLiteConnection(databasePath);
-            connection.CreateTable<userLogin>();
-        }
-        public userLogin GetUserByEmail(string email)
-        {
-            return connection.Table<userLogin>().FirstOrDefault(u => u.email == email);
-        }
-        public void InsertuserLogin(userLogin user)
-        {
-            connection.Insert(user);
         }
     }
 }

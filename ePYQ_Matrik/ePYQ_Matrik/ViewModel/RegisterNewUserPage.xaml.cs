@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ePYQ_Matrik.ViewModel;
-using ePYQ_Matrik.Model;
+
 
 namespace ePYQ_Matrik
 {
@@ -14,13 +14,18 @@ namespace ePYQ_Matrik
     public partial class RegisterNewUserPage : ContentPage
     {
         private bool isGoogleSignInInProgress;
+        private DatabaseService databaseService;
 
         public RegisterNewUserPage()
         {
             InitializeComponent();
 
             isGoogleSignInInProgress = false;
+            string databasePath = DependencyService.Get<ISQLite>().GetDatabasePath("C:\\Users\\User\\source\\repos\\ePYQ_Matrik\\ePYQ_Matrik\\ePYQ_Matrik\\Model\\myDB.db");
+            databaseService = new DatabaseService(databasePath);
         }
+
+
 
         private async void RegisterButton_Clicked(object sender, EventArgs e)
         {
@@ -44,17 +49,15 @@ namespace ePYQ_Matrik
             }
 
             // TODO: Add code to register new user in database
-            var newUser = new userLogin
+            var user = new UserLogin
             {
-                username = UsernameEntry.Text,
-                password = PasswordEntry.Text
+                Username = UsernameEntry.Text,
+                Password = PasswordEntry.Text,
+                Email = EmailEntry.Text
             };
 
-            // Create an instance of DatabaseService
-            var databaseService = new DatabaseService();
-
             // Insert the new user into the database using the instance
-            databaseService.InsertuserLogin(newUser);
+            databaseService.InsertUserLogin(user);
 
             // Show success message and navigate to login page
             await DisplayAlert("Success", "Your account has been created.", "OK");
@@ -77,7 +80,7 @@ namespace ePYQ_Matrik
 
                 if (googleUser != null)
                 {
-                    var databaseService = new DatabaseService(); // Create an instance of DatabaseService
+                    
 
                     // Check if the user already exists in the database using their email or any other unique identifier
                     var existingUser = databaseService.GetUserByEmail(googleUser.Email);
@@ -91,19 +94,20 @@ namespace ePYQ_Matrik
                     else
                     {
                         // User does not exist, create a new account
-                        var newUser = new userLogin
+                        var newUser = new UserLogin
                         {
-                            username = googleUser.Name,
-                            email = googleUser.Email,
+                            Username = googleUser.Name,
+                            Email = googleUser.Email,
                             // Set a default password or generate a random one
-                            password = GenerateRandomPassword()
+                            Password = GenerateRandomPassword()
                         };
 
                         // Insert the new user into the database
-                        databaseService.InsertuserLogin(newUser);
+                        databaseService.InsertUserLogin(newUser);
 
-                        await DisplayAlert("Success", $"Welcome, {newUser.username}!", "OK");
+                        await DisplayAlert("Success", $"Welcome, {newUser.Username}!", "OK");
                         await Navigation.PushAsync(new MainPage());
+
                     }
                 }
             }

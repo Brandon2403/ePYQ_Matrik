@@ -25,19 +25,33 @@ namespace ePYQ_Matrik.ViewModel
             {
                 new MyItem
                 {
-                    Title = "Biology 10.0 GROWTH",
+                    Title = "Biology",
                     Description = "Past Year Question",
                     ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/833px-PDF_file_icon.svg.png",
-                    PaperUrl = "https://drive.google.com/file/d/1aOKZlQIZ1MIKlKF7qdBe46kOmsJDt9wc/view?usp=share_link"
+                    PaperUrl = "https://drive.google.com/drive/folders/10NTw_hz73klrdORC9uYyJewv9tqoeRfL?usp=sharing"
                 },
                 new MyItem
                 {
-                    Title = "Physics Trial Paper 2022",
-                    Description = "Kolej Matrikulasi Labuan",
+                    Title = "Physics",
+                    Description = "Past Year Question",
                     ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/833px-PDF_file_icon.svg.png",
-                    PaperUrl = "https://www.example.com/file.pdf"
+                    PaperUrl = "https://drive.google.com/drive/folders/1WPSFpRFIo6WKWcISpytErcVDxeiaXdIU?usp=sharing"
                 },
-                 
+                new MyItem
+                {
+                    Title = "Chemistry",
+                    Description = "Past Year Question",
+                    ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/833px-PDF_file_icon.svg.png",
+                    PaperUrl = "https://drive.google.com/drive/folders/1B41i-G2o4180EX3FKGb9F0ljgmVa_qhV?usp=sharing"
+                },
+                new MyItem
+                {
+                    Title = "Math",
+                    Description = "Past Year Question",
+                    ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/833px-PDF_file_icon.svg.png",
+                    PaperUrl = "https://drive.google.com/drive/folders/1nzBm3ZnGNug4s8ClIMLdJFGz3xrmAMjQ?usp=sharing"
+                },
+               
              
                   
                 // Add more items as needed

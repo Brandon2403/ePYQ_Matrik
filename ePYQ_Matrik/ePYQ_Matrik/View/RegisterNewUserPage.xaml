@@ -103,7 +103,7 @@
                 BackgroundColor="Purple"
                 BorderWidth="1.5"
                 CornerRadius="48"
-                Clicked="RegisterButton_Clicked" />
+                Command="{Binding LoginCommand}" />
 
             <Label HorizontalOptions="Center" HorizontalTextAlignment="Center">
                 <Label.FormattedText>
@@ -114,11 +114,9 @@
                     </FormattedString>
                 </Label.FormattedText>
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    <TapGestureRecognizer Command="{Binding LoginCommand}"/>
                 </Label.GestureRecognizers>
             </Label>
-
-            <Button Text="Sign Up with Google" Clicked="GoogleSignInButton_Clicked" BackgroundColor="#4285F4" TextColor="White" FontSize="Medium" HeightRequest="50" CornerRadius="25" Margin="20,10,20,0"/>
 
         </StackLayout>
     </ContentPage.Content>

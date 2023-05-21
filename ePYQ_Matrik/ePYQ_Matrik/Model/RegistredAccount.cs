@@ -4,17 +4,16 @@ namespace ePYQ_Matrik.Model
 {
     public class RegisteredAccount
     {
-        public string StudentId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
 
         // Collection to store registered accounts
         private static List<RegisteredAccount> RegisteredAccounts { get; } = new List<RegisteredAccount>();
 
-        // Method to retrieve a registered account based on student ID
-        public static RegisteredAccount GetRegisteredAccount(string studentId)
+        // Method to retrieve a registered account based on username
+        public static RegisteredAccount GetRegisteredAccount(string username)
         {
-            return RegisteredAccounts.Find(account => account.StudentId == studentId);
+            return RegisteredAccounts.Find(account => account.Username == username);
         }
 
         // Method to add a new registered account

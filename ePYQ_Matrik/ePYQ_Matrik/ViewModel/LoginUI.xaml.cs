@@ -13,14 +13,8 @@ namespace ePYQ_Matrik
         public LoginUI()
         {
             InitializeComponent();
-            LoginCommand = new Command(Login);
-            RegisterCommand = new Command(Register);
-        }
-
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new RegisterNewUserPage());
+            //LoginCommand = new Command(Login);
+            //RegisterCommand = new Command(Register);
         }
     }
 }

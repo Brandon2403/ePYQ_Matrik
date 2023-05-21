@@ -14,15 +14,28 @@ namespace ePYQ_Matrik
         public RegisterNewUserPage()
         {
             InitializeComponent();
-            RegisterCommand = new Command(OnRegister);
+            //RegisterCommand = new Command(OnRegister);
         }
 
         public ICommand RegisterCommand { get; private set; }
 
-        private void OnRegister()
+        /*private void OnRegister()
         {
             // Perform registration logic here
+            // Create a new registered account
+            Model.RegisteredAccount newAccount = new Model.RegisteredAccount
+            {
+                Username = Username,
+                Password = Password
+            };
 
+            // Store the new account in the RegisteredAccount model
+            Model.RegisteredAccount.AddRegisteredAccount(newAccount);
+        }*/
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            // Perform registration logic here
             // Create a new registered account
             Model.RegisteredAccount newAccount = new Model.RegisteredAccount
             {
@@ -33,12 +46,13 @@ namespace ePYQ_Matrik
             // Store the new account in the RegisteredAccount model
             Model.RegisteredAccount.AddRegisteredAccount(newAccount);
 
-            // Navigate back to the login page
-           
+            await DisplayAlert("Account", "Account has been creatted.", "OK");
+            await Navigation.PushAsync(new LoginUI());
         }
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new LoginUI());
+            // Navigate back to the login page
+            await Navigation.PushAsync(new LoginUI());
         }
     }  
 }

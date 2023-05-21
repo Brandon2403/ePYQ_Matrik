@@ -65,7 +65,7 @@
                 BackgroundColor="Purple"
                 BorderWidth="1.5"
                 CornerRadius="48"
-                Command="{Binding LoginCommand}">
+                Clicked="Button_Clicked">
             </Button>
 
             <Label HorizontalOptions="Center" Margin="28" VerticalOptions="Center" HorizontalTextAlignment="Center" >
@@ -76,7 +76,7 @@
                     </FormattedString>
                 </Label.FormattedText>
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding LoginCommand}"/>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Label.GestureRecognizers>
             </Label>
 

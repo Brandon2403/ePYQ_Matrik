@@ -43,7 +43,16 @@ namespace ePYQ_Matrik
 
         private void Login()
         {
-            Application.Current.MainPage = new LoginUI();
+            RegisteredAccount account = RegisteredAccount.GetRegisteredAccount(Username);
+
+            if (account != null && account.Password == Password)
+            {
+                Application.Current.MainPage = new MainPage();
+            }
+            else
+            {
+                Application.Current.MainPage.DisplayAlert("Error", "Invalid username or password.", "OK");
+            }
         }
         private async void Button_Clicked(object sender, EventArgs e)
         {
@@ -51,12 +60,18 @@ namespace ePYQ_Matrik
 
             if (account != null && account.Password == Password)
             {
-                await Navigation.PushAsync(new MainPage());
+                await Application.Current.MainPage.Navigation.PushAsync(new MainPage()); // Navigates to the MainPage upon successful login
             }
             else
             {
-                await DisplayAlert("Oops!", "Username or Password is incorrect", "Ok");
+                await DisplayAlert("Error", "Invalid username or password.", "OK"); // Displays an alert for invalid credentials
             }
         }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RegisterNewUserPage());
+        }
+
     }
 }

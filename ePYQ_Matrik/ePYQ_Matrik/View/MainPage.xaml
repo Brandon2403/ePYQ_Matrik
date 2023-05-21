@@ -311,7 +311,7 @@
 
         <!--AboutUs Page-->
         <xct:TabViewItem
-            Icon="https://cdn-icons-png.flaticon.com/512/61/61205.png"
+            Icon="https://icons.veryicon.com/png/o/education-technology/radio-and-tv-cloud/about-us-22.png"
             FontSize="18"
             ControlTemplate="{StaticResource TabItemTemplate}"
             TextColorSelected="Purple">

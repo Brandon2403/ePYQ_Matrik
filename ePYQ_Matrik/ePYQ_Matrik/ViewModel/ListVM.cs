@@ -1,22 +1,47 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ePYQ_Matrik.ViewModel
 {
-    public class MyItem
+    public abstract class Item : INotifyPropertyChanged
     {
         public string Title { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public string PaperUrl { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public abstract void OpenUrl();
+    }
+
+    public class MyItem : Item
+    {
+        public override void OpenUrl()
+        {
+            try
+            {
+                // Implement the specific behavior for opening the URL
+                if (!string.IsNullOrEmpty(PaperUrl))
+                {
+                    Uri uri = new Uri(PaperUrl);
+                    Launcher.OpenAsync(uri);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception here
+                Console.WriteLine($"Error opening URL: {ex.Message}");
+                // You can display an error message to the user or perform any other necessary actions.
+            }
+        }
     }
 
     public class ListVM : INotifyPropertyChanged
     {
-
-        public View Content { get; set; }
-
         public ListVM()
         {
 
@@ -56,10 +81,7 @@ namespace ePYQ_Matrik.ViewModel
             };
         }
 
-
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private ObservableCollection<MyItem> _myItems;
         public ObservableCollection<MyItem> MyItems
         {

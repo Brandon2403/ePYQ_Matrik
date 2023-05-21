@@ -54,18 +54,11 @@ namespace ePYQ_Matrik
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            var tappedItem = (sender as View)?.BindingContext as MyItem;
+            var tappedItem = (sender as View)?.BindingContext as Item;
             if (tappedItem != null)
             {
-                Uri uri = new Uri(tappedItem.PaperUrl);
-                await Launcher.OpenAsync(uri);
+                tappedItem.OpenUrl(); // Polymorphic behavior based on the derived class implementation
             }
-        }
-
-
-        private void TabViewItem_SizeChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

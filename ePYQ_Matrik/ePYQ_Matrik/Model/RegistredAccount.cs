@@ -7,7 +7,7 @@ namespace ePYQ_Matrik.Model
         public string Username { get; set; }
         public string Password { get; set; }
 
-        // Collection to store registered accounts
+        // Collection to store registered account
         private static List<RegisteredAccount> RegisteredAccounts { get; } = new List<RegisteredAccount>();
 
         // Method to retrieve a registered account based on username

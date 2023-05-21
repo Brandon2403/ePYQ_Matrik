@@ -1,19 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using ePYQ_Matrik.ViewModel;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace ePYQ_Matrik
 {
     public partial class MainPage : ContentPage
     {
+        private ListVM listVM;
+
         public MainPage()
         {
             InitializeComponent();
-         
+            listVM = new ListVM(); //Instantiate ListVM
+
+            // assigning the PaperUrl from the ListVM to a variable in the MainPage
+            PaperUrl = listVM.PaperUrl;
+        }
+
+        private string _paperUrl;
+        public string PaperUrl
+        {
+            get { return _paperUrl; }
+            set
+            {
+                _paperUrl = value;
+                OnPropertyChanged(nameof(PaperUrl));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public class AdaptiveLabel : Label
@@ -27,9 +49,10 @@ namespace ePYQ_Matrik
             }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-
+            Uri uri = new Uri(PaperUrl);
+            await Launcher.OpenAsync(uri);
         }
 
         private void TabViewItem_SizeChanged(object sender, EventArgs e)

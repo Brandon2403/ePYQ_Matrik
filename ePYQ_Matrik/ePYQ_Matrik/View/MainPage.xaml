@@ -282,7 +282,7 @@
                                        VerticalTextAlignment="Center"
                                        LineHeight="1.2">
                                         <Label.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OpenPdfCommand}" />
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                                         </Label.GestureRecognizers>
                                     </Label>
 
@@ -379,23 +379,6 @@
                        HorizontalOptions="CenterAndExpand"
                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=profileLabel, Property=Height, Factor=1, Constant=12}"
                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-70}"/>
-
-                <!--
-                  <Button Text="Edit Profile" Grid.Row="3"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        TextColor="#AC80F4"
-                        BackgroundColor="White"
-                        BorderColor="#AC80F4"
-                        BorderWidth="1.1"
-                        CornerRadius="30"
-                        HeightRequest="60"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=profileLabel, Property=Height, Factor=1.5, Constant=100}"
-                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-100}"/>
-                -->
-              
             </Grid>
         </xct:TabViewItem>
 

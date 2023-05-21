@@ -17,7 +17,10 @@ namespace ePYQ_Matrik
             listVM = new ListVM(); //Instantiate ListVM
 
             // assigning the PaperUrl from the ListVM to a variable in the MainPage
-            PaperUrl = listVM.PaperUrl;
+            PaperUrl = listVM.MyItems[0].PaperUrl;
+
+            BindingContext = listVM; // Set the binding context
+
         }
 
         private string _paperUrl;
@@ -51,9 +54,14 @@ namespace ePYQ_Matrik
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            Uri uri = new Uri(PaperUrl);
-            await Launcher.OpenAsync(uri);
+            var tappedItem = (sender as View)?.BindingContext as MyItem;
+            if (tappedItem != null)
+            {
+                Uri uri = new Uri(tappedItem.PaperUrl);
+                await Launcher.OpenAsync(uri);
+            }
         }
+
 
         private void TabViewItem_SizeChanged(object sender, EventArgs e)
         {

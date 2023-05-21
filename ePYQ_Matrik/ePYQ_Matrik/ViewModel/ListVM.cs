@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ePYQ_Matrik.ViewModel
@@ -30,10 +25,10 @@ namespace ePYQ_Matrik.ViewModel
             {
                 new MyItem
                 {
-                    Title = "Chemistry Trial Paper 2020",
-                    Description = "Kolej Matrikulasi Perak",
+                    Title = "Biology 10.0 GROWTH",
+                    Description = "Past Year Question",
                     ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/833px-PDF_file_icon.svg.png",
-                    PaperUrl = "https://www.example.com/file.pdf"
+                    PaperUrl = "https://drive.google.com/file/d/1aOKZlQIZ1MIKlKF7qdBe46kOmsJDt9wc/view?usp=share_link"
                 },
                 new MyItem
                 {
@@ -42,27 +37,7 @@ namespace ePYQ_Matrik.ViewModel
                     ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/833px-PDF_file_icon.svg.png",
                     PaperUrl = "https://www.example.com/file.pdf"
                 },
-                  new MyItem
-                {
-                    Title = "Physics Trial Paper 2022",
-                    Description = "Kolej Matrikulasi Labuan",
-                    ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/833px-PDF_file_icon.svg.png",
-                    PaperUrl = "https://www.example.com/file.pdf"
-                },
-                       new MyItem
-                {
-                    Title = "Physics Trial Paper 2022",
-                    Description = "Kolej Matrikulasi Labuan",
-                    ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/833px-PDF_file_icon.svg.png",
-                    PaperUrl = "https://www.example.com/file.pdf"
-                },
-                            new MyItem
-                {
-                    Title = "Physics Trial Paper 2022",
-                    Description = "Kolej Matrikulasi Labuan",
-                    ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/833px-PDF_file_icon.svg.png",
-                    PaperUrl = "https://www.example.com/file.pdf"
-                },
+                 
              
                   
                 // Add more items as needed

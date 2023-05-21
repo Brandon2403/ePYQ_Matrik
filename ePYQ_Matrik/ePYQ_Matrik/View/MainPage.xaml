@@ -43,7 +43,7 @@
     <xct:TabView TabStripPlacement="Bottom" TabIndicatorColor="Purple" TabStripHeight="60" >
 
         <!--all files page-->
-        <xct:TabViewItem IsSelected="False" 
+        <xct:TabViewItem
             Icon="https://icons-for-free.com/iconfiles/png/512/check+document+file+icon+icon-1320196654394535651.png"
             FontSize="18" 
             ControlTemplate="{StaticResource TabItemTemplate}"  
@@ -80,8 +80,6 @@
 
                 </RelativeLayout>
 
-                
-
                 <!--3rd row, the list view-->
                 <CollectionView 
                         Grid.Row="1" Grid.Column="0" Margin="0,0,0,32"
@@ -111,7 +109,11 @@
                                            HeightRequest="132"
                                            VerticalOptions="StartAndExpand"
                                            HorizontalOptions="CenterAndExpand"
-                                           Margin="8" />
+                                           Margin="8">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
                                     </Frame>
 
                                     <Label Text="{Binding Title}"
@@ -126,7 +128,7 @@
                                        VerticalTextAlignment="Center"
                                        LineHeight="1.2">
                                         <Label.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OpenPdfCommand}" />
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                                         </Label.GestureRecognizers>
                                     </Label>
 
@@ -267,7 +269,12 @@
                                            HeightRequest="132"
                                            VerticalOptions="StartAndExpand"
                                            HorizontalOptions="CenterAndExpand"
-                                           Margin="8" />
+                                           Margin="8">
+                                            <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                            </Image.GestureRecognizers> 
+                                        </Image>
+
                                     </Frame>
 
                                     <Label Text="{Binding Title}"
@@ -306,8 +313,8 @@
         </xct:TabViewItem>
 
         
-        <!--userInfo page-->
-        <xct:TabViewItem  IsSelected="False"
+        <!--AboutUs page-->
+        <xct:TabViewItem  
             Icon="https://cdn-icons-png.flaticon.com/512/61/61205.png"       
             FontSize="18"
             ControlTemplate="{StaticResource TabItemTemplate}"  
@@ -325,7 +332,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Label
-                   Text="User Profile"
+                   Text="About Us"
                    FontAttributes="Bold" 
                    FontSize="20" 
                    TextColor="#0E0C0C"
@@ -353,32 +360,22 @@
                     </Frame.Background>
 
                     <Frame Margin="0" Padding="0" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="100" BackgroundColor="White" HasShadow="False">
-                        <Image Source="https://wonder-day.com/wp-content/uploads/2020/10/wonder-day-among-us-png-29.png" Aspect="Fill" />
+                        <Image Source="https://www.uts.edu.my/wp-content/uploads/2022/02/cropped-01-BLUE.png" Aspect="Fill" />
                     </Frame>
                 </Frame>
 
-                <Label x:Name="profileLabel" 
+                <Label 
                        Grid.Row="2"
                        Margin="16"
-                       Text="Brandon Ahmad Muaz"
+                       Text="Introducing ePYQ SETs - Matrikulasi: A mobile app developed by Brandon Chong Kian Hua (Leader) BCS22090026, Ahmad Muaz Naqiuddin Bin Ahmad Resahuddin (BCS22090027), and Athanesius Teo Wang Lai (BMD23020003). It offers Past Year Questions sets from all states for Malaysian Matriculation Programme students, supporting rich media content and convenient downloads to enhance exam preparation. We apologize if the app is not perfect, but we strive to provide a valuable tool for students. Thank you for the opportunity to showcase our abilities in CSS3133 - Object Oriented Programming."
                        HorizontalTextAlignment="Center"
-                       FontAttributes="Bold"
-                       FontSize="20"
+                       FontAttributes="None"
+                       FontSize="18"
                        TextColor="Black"
                        HorizontalOptions="CenterAndExpand"
                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=profilePicStack, Property=Y, Factor=1, Constant=90}"
                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-95}"/>
 
-                <Label Text="bcs22090026@student.uts.edu.my" 
-                       Grid.Row="2"
-                       FontAttributes="None"
-                       FontSize="Small"
-                       Margin="42"
-                       TextColor="Black"
-                       HorizontalTextAlignment="Center"
-                       HorizontalOptions="CenterAndExpand"
-                       RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=profileLabel, Property=Height, Factor=1, Constant=12}"
-                       RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-70}"/>
             </Grid>
         </xct:TabViewItem>
 

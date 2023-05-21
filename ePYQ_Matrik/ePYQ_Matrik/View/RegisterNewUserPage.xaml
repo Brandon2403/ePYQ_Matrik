@@ -52,7 +52,7 @@
                 <Entry Grid.Row="1"
                        Grid.Column="2" 
                        Margin="-118,0,10,0"
-                       x:Name="UsernameEntry" Placeholder="Username" />
+                       x:Name="UsernameEntry" TextColor="Gray" Placeholder="Username" />
 
                 <Image 
                     Grid.Row="2"
@@ -65,7 +65,7 @@
                 <Entry Grid.Row="2"
                        Grid.Column="2" 
                        Margin="-118,0,10,0"
-                       x:Name="EmailEntry" Placeholder="Email Address"/>
+                       x:Name="EmailEntry" TextColor="Gray" Placeholder="Email Address"/>
 
                 <Image 
                     Grid.Row="3"
@@ -78,7 +78,7 @@
                 <Entry Grid.Row="3"
                        Grid.Column="2" 
                        Margin="-118,0,10,0"
-                       x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+                       x:Name="PasswordEntry" TextColor="Gray" Placeholder="Password" IsPassword="True" />
 
                 <Image 
                     Grid.Row="4"
@@ -91,7 +91,7 @@
                 <Entry Grid.Row="4"
                        Grid.Column="2" 
                        Margin="-118,0,10,0"
-                       x:Name="ConfirmPasswordEntry" Placeholder="Confirm Password" IsPassword="True" />
+                       x:Name="ConfirmPasswordEntry" TextColor="Gray" Placeholder="Confirm Password" IsPassword="True" />
             </Grid>
 
             <Button 
@@ -103,7 +103,8 @@
                 BackgroundColor="Purple"
                 BorderWidth="1.5"
                 CornerRadius="48"
-                Clicked="RegisterButton_Clicked" />
+                Clicked="Button_Clicked">
+            </Button>
 
             <Label HorizontalOptions="Center" HorizontalTextAlignment="Center">
                 <Label.FormattedText>
@@ -117,8 +118,6 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Label.GestureRecognizers>
             </Label>
-
-            <Button Text="Sign Up with Google" Clicked="GoogleSignInButton_Clicked" BackgroundColor="#4285F4" TextColor="White" FontSize="Medium" HeightRequest="50" CornerRadius="25" Margin="20,10,20,0"/>
 
         </StackLayout>
     </ContentPage.Content>

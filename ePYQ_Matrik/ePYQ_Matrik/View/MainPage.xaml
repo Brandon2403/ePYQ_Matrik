@@ -1,0 +1,391 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:ePYQ_Matrik"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:vm1="clr-namespace:ePYQ_Matrik.ViewModel"
+             x:Class="ePYQ_Matrik.MainPage" NavigationPage.HasBackButton="False" NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <vm1:ListVM/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ControlTemplate  
+   		        x:Key="TabItemTemplate">
+                <Grid  
+   			        RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Image  
+   				        Grid.Row="0"  
+   				        VerticalOptions="Center"  
+   				        HorizontalOptions="Center"  
+                        Margin="2"  
+   				        Source="{TemplateBinding CurrentIcon}" />
+                    <!--set ` TextTransform="Lowercase"` for Label here-->
+                    <Label  
+   				        Grid.Row="1"  
+   				        HorizontalOptions="Center"  
+   				        FontSize="{TemplateBinding FontSize}"  
+   				        Text="{TemplateBinding Text}"  
+                        TextTransform="None"  
+   				        TextColor="{TemplateBinding CurrentTextColor}" />
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    
+    
+    <xct:TabView TabStripPlacement="Bottom" TabIndicatorColor="Purple" TabStripHeight="60" >
+
+        <!--homepage-->
+        <xct:TabViewItem  
+            IsSelected="True"
+            Icon="https://cdn-icons-png.flaticon.com/512/25/25694.png"
+            FontSize="18" 
+            ControlTemplate="{StaticResource TabItemTemplate}"  
+            TextColorSelected="Purple">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!--1st row-->
+                <Label Text="Hello student!"
+                   FontAttributes="Bold" 
+                   FontSize="20" 
+                   TextColor="#0E0C0C"
+                   Margin="46"
+                   HorizontalOptions="CenterAndExpand"/>
+                <RelativeLayout>
+                    <Frame
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.06}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.9}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.46}"
+                        BackgroundColor="#CE7EF3"
+                        CornerRadius="30">
+                        <Label
+                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}"
+                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.8}"
+                            Text="Start &#10;Learning"
+                            FontSize="38"
+                            HorizontalTextAlignment="Start"
+                            FontAttributes="Bold"
+                            TextColor="#FFFFFF"
+                            VerticalOptions="Start"
+                            HorizontalOptions="Start"/>
+                    </Frame>
+
+                    <Image
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.6}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.22}"
+                        Source="https://cdn-icons-png.flaticon.com/512/747/747086.png"
+                        Aspect="AspectFit"
+                        WidthRequest="125"
+                        HeightRequest="125"/>
+                    <Label
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}"                  
+                        Text="Embrace the challenge, achieve greatness."
+                        FontAttributes="Bold"
+                        WidthRequest="300"
+                        HorizontalOptions="CenterAndExpand"
+                        FontSize="24"/>
+                </RelativeLayout>
+
+                <!--2nd row-->
+                <RelativeLayout>
+                    <Label
+                        Text="Latest Past Year Questions"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HorizontalTextAlignment="Start"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.08}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.7}" />
+                    <Image
+                        Source="https://cdn-icons-png.flaticon.com/512/4344/4344873.png"
+                        HeightRequest="58"
+                        HorizontalOptions="End"
+                        Aspect="AspectFit"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.67}" />
+                </RelativeLayout>
+
+
+                <!--3rd row, the list view-->
+                <CollectionView 
+                        Grid.Row="2" Grid.Column="0"
+                        HorizontalScrollBarVisibility="Always"
+                        Margin="0, -124, 0, 32"
+                        ItemsSource="{Binding MyItems}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                      Span="2"
+                                      VerticalItemSpacing="10"
+                                      HorizontalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10"
+                               BackgroundColor="#bf9aca,"
+                               CornerRadius="20"
+                               HasShadow="False">
+                                <StackLayout>
+                                    <Frame CornerRadius="20"
+                                       BackgroundColor="Transparent"
+                                       HasShadow="False"
+                                       HeightRequest="168"
+                                       WidthRequest="160">
+                                        <Image Source="{Binding ImageUrl}"
+                                           Aspect="AspectFill"
+                                           WidthRequest="116"
+                                           HeightRequest="132"
+                                           VerticalOptions="StartAndExpand"
+                                           HorizontalOptions="CenterAndExpand"
+                                           Margin="8">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+
+                                    </Frame>
+
+                                    <Label Text="{Binding Title}"
+                                       FontAttributes="Bold"
+                                       FontSize="18"
+                                       TextColor="Black"
+                                       Margin="0"
+                                       Padding="0"
+                                       VerticalOptions="EndAndExpand"
+                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       LineHeight="1.2">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+
+                                    <Label Text="{Binding Description}"
+                                       FontAttributes="None"
+                                       FontSize="12"
+                                       TextColor="Black"
+                                       Margin="0"
+                                       Padding="0"
+                                       VerticalOptions="EndAndExpand"
+                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       LineHeight="0.6" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </xct:TabViewItem>
+
+        <!--all files page-->
+        <xct:TabViewItem
+            Icon="https://icons-for-free.com/iconfiles/png/512/check+document+file+icon+icon-1320196654394535651.png"
+            FontSize="18" 
+            ControlTemplate="{StaticResource TabItemTemplate}"  
+            TextColorSelected="Purple">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!--1st row-->
+                <RelativeLayout Grid.Row="0" Grid.Column="0" Margin="0, 0, 0, -82">
+                        <Label 
+                                Text="All Past Year Questions"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalTextAlignment="Start"
+                                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.08}"
+                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.3}" />
+                        <Image
+                                Source="https://cdn-icons-png.flaticon.com/512/4344/4344873.png"
+                                HeightRequest="58"
+                                HorizontalOptions="End"
+                                Aspect="AspectFit"
+                                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}"
+                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}" />
+
+                </RelativeLayout>
+
+                <!--3rd row, the list view-->
+                <CollectionView 
+                        Grid.Row="1" Grid.Column="0" Margin="0,0,0,32"
+                        HorizontalScrollBarVisibility="Always"
+                        ItemsSource="{Binding MyItems}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                      Span="2"
+                                      VerticalItemSpacing="10"
+                                      HorizontalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10"
+                               BackgroundColor="#fff8f0"
+                               CornerRadius="20"
+                               HasShadow="False">
+                                <StackLayout>
+                                    <Frame CornerRadius="20"
+                                       BackgroundColor="Transparent"
+                                       HasShadow="False"
+                                       HeightRequest="168"
+                                       WidthRequest="160">
+                                        <Image Source="{Binding ImageUrl}"
+                                           Aspect="AspectFill"
+                                           WidthRequest="116"
+                                           HeightRequest="132"
+                                           VerticalOptions="StartAndExpand"
+                                           HorizontalOptions="CenterAndExpand"
+                                           Margin="8">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Frame>
+
+                                    <Label Text="{Binding Title}"
+                                       FontAttributes="Bold"
+                                       FontSize="18"
+                                       TextColor="Black"
+                                       Margin="0"
+                                       Padding="0"
+                                       VerticalOptions="EndAndExpand"
+                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       LineHeight="1.2">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+
+                                    <Label Text="{Binding Description}"
+                                       FontAttributes="None"
+                                       FontSize="12"
+                                       TextColor="Black"
+                                       Margin="0"
+                                       Padding="0"
+                                       VerticalOptions="EndAndExpand"
+                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       LineHeight="0.6" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </xct:TabViewItem>
+
+      
+
+        <!--AboutUs Page-->
+        <xct:TabViewItem
+            Icon="https://cdn-icons-png.flaticon.com/512/61/61205.png"
+            FontSize="18"
+            ControlTemplate="{StaticResource TabItemTemplate}"
+            TextColorSelected="Purple">
+            <xct:TabViewItem.Content>
+                <ScrollView>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Text="About Us"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            TextColor="#0E0C0C"
+                            Margin="46"
+                            HorizontalOptions="CenterAndExpand"
+                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=profileLabel, Property=Height, Factor=1}"
+                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}" />
+
+                        <Frame
+                            Grid.Row="1"
+                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.06}"
+                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}"
+                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.9}"
+                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.46}"
+                            BackgroundColor="#CE7EF3"
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="240" HeightRequest="120"
+                            CornerRadius="60">
+                            <Frame.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="#CE7EF3" Offset="0.199" />
+                                    <GradientStop Color="#CE7EF3" Offset="0.2188" />
+                                    <GradientStop Color="#C55EF5" Offset="0.4062" />
+                                    <GradientStop Color="#6A0A97" Offset="1" />
+                                </LinearGradientBrush>
+                            </Frame.Background>
+
+                            <Frame
+                                Margin="0"
+                                Padding="0"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                CornerRadius="30"
+                                BackgroundColor="White"
+                                HasShadow="False">  
+                                <Image Source="https://www.uts.edu.my/wp-content/uploads/2022/02/cropped-01-BLUE.png" Aspect="AspectFit" />
+                            </Frame>
+                        </Frame>
+
+                        <Label
+                            Grid.Row="2"
+                            Margin="16"
+                            Text="Introducing ePYQ SETs - Matrikulasi: A mobile app developed by Brandon Chong Kian Hua (Leader) BCS22090026, Ahmad Muaz Naqiuddin Bin Ahmad Resahuddin (BCS22090027), and Athanesius Teo Wang Lai (BMD23020003). It offers Past Year Questions sets from all states for Malaysian Matriculation Programme students, supporting rich media content and convenient downloads to enhance exam preparation. We apologize if the app is not perfect, but we strive to provide a valuable tool for students. Thank you for the opportunity to showcase our abilities in CSS3133 - Object Oriented Programming."
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="None"
+                            FontSize="16"
+                            TextColor="Black"
+                            HorizontalOptions="CenterAndExpand"
+                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=profilePicStack, Property=Y, Factor=1, Constant=90}"
+                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-95}" />
+                    </Grid>
+                </ScrollView>
+            </xct:TabViewItem.Content>
+        </xct:TabViewItem>
+
+
+    </xct:TabView>
+</ContentPage>

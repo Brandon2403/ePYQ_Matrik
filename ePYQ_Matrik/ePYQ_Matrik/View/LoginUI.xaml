@@ -39,7 +39,7 @@
                 <Entry Grid.Row="1"
                        Grid.Column="2" 
                        Margin="-118,0,10,0"
-                       x:Name="UsernameEntry" Placeholder="Username" TextColor="Black" PlaceholderColor="Gray" />
+                       x:Name="UsernameEntry" Placeholder="Username" Text="{Binding Username}" TextColor="Black" PlaceholderColor="Gray" />
 
                 <Image 
                     Grid.Row="2"
@@ -52,7 +52,7 @@
                 <Entry Grid.Row="2"
                        Grid.Column="2" 
                        Margin="-118,0,10,0"
-                        x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" TextColor="Black" PlaceholderColor="Gray"/>
+                        x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" Text="{Binding Password}" TextColor="Black" PlaceholderColor="Gray"/>
             </Grid>
 
             <Button
@@ -68,12 +68,6 @@
                 Clicked="Button_Clicked">
             </Button>
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Margin="-14">
-                <Switch x:Name="RememberMeSwitch" IsToggled="{Binding RememberMe, Mode=TwoWay}" />
-                <Label Text="Remember me" VerticalOptions="Center" />
-            </StackLayout>
-
-
             <Label HorizontalOptions="Center" Margin="28" VerticalOptions="Center" HorizontalTextAlignment="Center" >
                 <Label.FormattedText>
                     <FormattedString>
@@ -85,9 +79,6 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Label.GestureRecognizers>
             </Label>
-
-            <Button Text="Sign in with Google" Clicked="OnGoogleSignInButtonClicked" />
-
 
         </StackLayout>
     </ContentPage.Content>

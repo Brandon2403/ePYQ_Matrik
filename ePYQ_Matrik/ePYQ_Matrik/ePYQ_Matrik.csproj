@@ -11,10 +11,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Release\netstandard2.0\ePYQ_Matrik.deps.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netstandard2.0\ePYQ_Matrik.dll" />
+    <None Include="bin\Release\netstandard2.0\ePYQ_Matrik.dll" />
+    <None Include="bin\Release\netstandard2.0\ePYQ_Matrik.pdb" />
+    <None Include="obj\Debug\netstandard2.0\ref\ePYQ_Matrik.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Google.Apis.Auth" Version="1.60.0" />
     <PackageReference Include="Google.Apis.Oauth2.v2" Version="1.60.0.1869" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.11" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.117" />
     <PackageReference Include="Xamarin.Auth" Version="1.7.0" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.5" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
   </ItemGroup>
@@ -26,10 +46,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="LoginUI.xaml">
+    <EmbeddedResource Update="View\LoginUI.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="RegisterNewUserPage.xaml">
+    <EmbeddedResource Update="View\RegisterNewUserPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

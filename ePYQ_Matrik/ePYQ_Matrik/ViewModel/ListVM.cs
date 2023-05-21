@@ -15,11 +15,6 @@ namespace ePYQ_Matrik.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         public abstract void OpenUrl();
     }
 
@@ -47,9 +42,6 @@ namespace ePYQ_Matrik.ViewModel
 
     public class ListVM : INotifyPropertyChanged
     {
-
-        public View Content { get; set; }
-
         public ListVM()
         {
 

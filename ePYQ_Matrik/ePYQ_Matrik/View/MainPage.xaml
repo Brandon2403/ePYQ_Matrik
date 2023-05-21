@@ -42,115 +42,6 @@
     
     <xct:TabView TabStripPlacement="Bottom" TabIndicatorColor="Purple" TabStripHeight="60" >
 
-        <!--all files page-->
-        <xct:TabViewItem
-            Icon="https://icons-for-free.com/iconfiles/png/512/check+document+file+icon+icon-1320196654394535651.png"
-            FontSize="18" 
-            ControlTemplate="{StaticResource TabItemTemplate}"  
-            TextColorSelected="Purple">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-
-                <!--1st row-->
-                <RelativeLayout Grid.Row="0" Grid.Column="0" Margin="0, 0, 0, -82">
-                        <Label 
-                                Text="All Past Year Questions"
-                                TextColor="Black"
-                                FontAttributes="Bold"
-                                FontSize="20"
-                                HorizontalTextAlignment="Start"
-                                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.08}"
-                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.3}" />
-                        <Image
-                                Source="https://cdn-icons-png.flaticon.com/512/4344/4344873.png"
-                                HeightRequest="58"
-                                HorizontalOptions="End"
-                                Aspect="AspectFit"
-                                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}"
-                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}" />
-
-                </RelativeLayout>
-
-                <!--3rd row, the list view-->
-                <CollectionView 
-                        Grid.Row="1" Grid.Column="0" Margin="0,0,0,32"
-                        HorizontalScrollBarVisibility="Always"
-                        ItemsSource="{Binding MyItems}">
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical"
-                                      Span="2"
-                                      VerticalItemSpacing="10"
-                                      HorizontalItemSpacing="10" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame Padding="10"
-                               BackgroundColor="#c0c0c0"
-                               CornerRadius="20"
-                               HasShadow="False">
-                                <StackLayout>
-                                    <Frame CornerRadius="20"
-                                       BackgroundColor="Transparent"
-                                       HasShadow="False"
-                                       HeightRequest="168"
-                                       WidthRequest="160">
-                                        <Image Source="{Binding ImageUrl}"
-                                           Aspect="AspectFill"
-                                           WidthRequest="116"
-                                           HeightRequest="132"
-                                           VerticalOptions="StartAndExpand"
-                                           HorizontalOptions="CenterAndExpand"
-                                           Margin="8">
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                            </Image.GestureRecognizers>
-                                        </Image>
-                                    </Frame>
-
-                                    <Label Text="{Binding Title}"
-                                       FontAttributes="Bold"
-                                       FontSize="18"
-                                       TextColor="Black"
-                                       Margin="0"
-                                       Padding="0"
-                                       VerticalOptions="EndAndExpand"
-                                       HorizontalOptions="CenterAndExpand"
-                                       HorizontalTextAlignment="Center"
-                                       VerticalTextAlignment="Center"
-                                       LineHeight="1.2">
-                                        <Label.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                        </Label.GestureRecognizers>
-                                    </Label>
-
-                                    <Label Text="{Binding Description}"
-                                       FontAttributes="None"
-                                       FontSize="12"
-                                       TextColor="Black"
-                                       Margin="0"
-                                       Padding="0"
-                                       VerticalOptions="EndAndExpand"
-                                       HorizontalOptions="CenterAndExpand"
-                                       HorizontalTextAlignment="Center"
-                                       VerticalTextAlignment="Center"
-                                       LineHeight="0.6" />
-                                </StackLayout>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Grid>
-        </xct:TabViewItem>
-
         <!--homepage-->
         <xct:TabViewItem  
             IsSelected="True"
@@ -249,7 +140,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame Padding="10"
-                               BackgroundColor="#E5E1E7"
+                               BackgroundColor="#bf9aca,"
                                CornerRadius="20"
                                HasShadow="False">
                                 <StackLayout>
@@ -266,8 +157,8 @@
                                            HorizontalOptions="CenterAndExpand"
                                            Margin="8">
                                             <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                            </Image.GestureRecognizers> 
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                            </Image.GestureRecognizers>
                                         </Image>
 
                                     </Frame>
@@ -306,6 +197,117 @@
                 </CollectionView>
             </Grid>
         </xct:TabViewItem>
+
+        <!--all files page-->
+        <xct:TabViewItem
+            Icon="https://icons-for-free.com/iconfiles/png/512/check+document+file+icon+icon-1320196654394535651.png"
+            FontSize="18" 
+            ControlTemplate="{StaticResource TabItemTemplate}"  
+            TextColorSelected="Purple">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!--1st row-->
+                <RelativeLayout Grid.Row="0" Grid.Column="0" Margin="0, 0, 0, -82">
+                        <Label 
+                                Text="All Past Year Questions"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                FontSize="20"
+                                HorizontalTextAlignment="Start"
+                                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.08}"
+                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.3}" />
+                        <Image
+                                Source="https://cdn-icons-png.flaticon.com/512/4344/4344873.png"
+                                HeightRequest="58"
+                                HorizontalOptions="End"
+                                Aspect="AspectFit"
+                                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.8}"
+                                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.2}" />
+
+                </RelativeLayout>
+
+                <!--3rd row, the list view-->
+                <CollectionView 
+                        Grid.Row="1" Grid.Column="0" Margin="0,0,0,32"
+                        HorizontalScrollBarVisibility="Always"
+                        ItemsSource="{Binding MyItems}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                      Span="2"
+                                      VerticalItemSpacing="10"
+                                      HorizontalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10"
+                               BackgroundColor="#fff8f0"
+                               CornerRadius="20"
+                               HasShadow="False">
+                                <StackLayout>
+                                    <Frame CornerRadius="20"
+                                       BackgroundColor="Transparent"
+                                       HasShadow="False"
+                                       HeightRequest="168"
+                                       WidthRequest="160">
+                                        <Image Source="{Binding ImageUrl}"
+                                           Aspect="AspectFill"
+                                           WidthRequest="116"
+                                           HeightRequest="132"
+                                           VerticalOptions="StartAndExpand"
+                                           HorizontalOptions="CenterAndExpand"
+                                           Margin="8">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Frame>
+
+                                    <Label Text="{Binding Title}"
+                                       FontAttributes="Bold"
+                                       FontSize="18"
+                                       TextColor="Black"
+                                       Margin="0"
+                                       Padding="0"
+                                       VerticalOptions="EndAndExpand"
+                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       LineHeight="1.2">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+
+                                    <Label Text="{Binding Description}"
+                                       FontAttributes="None"
+                                       FontSize="12"
+                                       TextColor="Black"
+                                       Margin="0"
+                                       Padding="0"
+                                       VerticalOptions="EndAndExpand"
+                                       HorizontalOptions="CenterAndExpand"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       LineHeight="0.6" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </xct:TabViewItem>
+
+      
 
         <!--AboutUs Page-->
         <xct:TabViewItem

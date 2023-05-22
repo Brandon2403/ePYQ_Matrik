@@ -365,7 +365,7 @@
                                 HorizontalOptions="Center"
                                 CornerRadius="30"
                                 BackgroundColor="White"
-                                HasShadow="False">  
+                                HasShadow="False">
                                 <Image Source="https://www.uts.edu.my/wp-content/uploads/2022/02/cropped-01-BLUE.png" Aspect="AspectFit" />
                             </Frame>
                         </Frame>
@@ -385,7 +385,5 @@
                 </ScrollView>
             </xct:TabViewItem.Content>
         </xct:TabViewItem>
-
-
     </xct:TabView>
 </ContentPage>
